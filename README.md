@@ -182,13 +182,26 @@ Tailwind CSS v4 with CSS custom properties for theming. The design system uses a
 
 ## Deployment
 
-### Production Build
+### GitHub Pages (Automatic)
+
+The project includes a GitHub Actions workflow (`.github/workflows/deploy.yml`) that automatically builds and deploys to GitHub Pages on every push to `main`.
+
+**Setup steps:**
+
+1. Push this repository to GitHub
+2. Go to **Settings > Pages**
+3. Under **Source**, select **GitHub Actions**
+4. Push to `main` — the workflow will build and deploy automatically
+
+The site will be live at `https://<username>.github.io/pii-scanner-website/`
+
+### Manual Production Build
 
 ```bash
 npm run build
 ```
 
-The project uses Next.js standalone output mode, producing a self-contained server in `.next/standalone/`.
+The project uses Next.js static export, producing optimized files in the `out/` directory. This output can be hosted on any static hosting provider (Vercel, Netlify, Cloudflare Pages, S3, etc.).
 
 ### Docker (via Caddy)
 
