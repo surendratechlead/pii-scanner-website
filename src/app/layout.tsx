@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   keywords: ["PII Scanner", "Data Privacy", "GDPR Compliance", "CCPA Compliance", "Data Protection", "Sensitive Data", "Database Security", "Privacy Compliance"],
   authors: [{ name: "PII Scanner Team" }],
   icons: {
-    icon: "/logo.svg",
+    icon: "/favicon.svg",
   },
   openGraph: {
     title: "PII Scanner - Enterprise Data Privacy Protection",
