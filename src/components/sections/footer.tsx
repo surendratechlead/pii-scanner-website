@@ -4,20 +4,22 @@ const FOOTER_LINKS = {
   Product: [
     { label: 'Features', href: '#features' },
     { label: 'Pricing', href: '#pricing' },
-    { label: 'Integrations', href: '#' },
-    { label: 'API Docs', href: '#' },
+    { label: 'AI Detection', href: '#ai-detection' },
+    { label: 'Databases', href: '#databases' },
+    { label: 'Integrations', href: '#integrations' },
   ],
   Resources: [
-    { label: 'Blog', href: '#' },
-    { label: 'Documentation', href: '#' },
+    { label: 'Blogs', href: '#' },
     { label: 'Case Studies', href: '#' },
-    { label: 'FAQ', href: '#faq' },
+    { label: 'Whitepapers', href: '#' },
+    { label: 'Documentation', href: '#' },
+    { label: 'Support', href: '#' },
   ],
   Company: [
-    { label: 'About Us', href: '#' },
-    { label: 'Careers', href: '#' },
+    { label: 'About Us', href: '#about' },
     { label: 'Contact', href: '#' },
     { label: 'Partners', href: '#' },
+    { label: 'Privacy Policy', href: '#' },
   ],
 } as const
 

@@ -1,50 +1,97 @@
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Search, Database, Zap, Shield, BarChart3, Lock } from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Search, Brain, Layers, BarChart3, Cloud, Shield } from 'lucide-react'
 
 interface Feature {
   icon: React.ReactNode
   title: string
   description: string
+  items: string[]
+  footnote?: string
   color: string
 }
 
 const FEATURES: Feature[] = [
   {
     icon: <Search className="w-5 h-5 md:w-6 md:h-6" />,
-    title: 'Intelligent Detection',
-    description: 'AI-powered pattern recognition identifies PII across 50+ data types including SSN, credit cards, emails, and custom formats.',
+    title: 'Automated PII Discovery',
+    description: 'Automatically locate Personally Identifiable Information across:',
+    items: [
+      'File servers and shared drives',
+      'Databases (structured data)',
+      'Emails and attachments',
+      'Cloud storage (OneDrive, SharePoint, S3, etc.)',
+      'Endpoints and user workstations',
+    ],
+    footnote: 'Scans can be run on-demand, scheduled, or continuously, ensuring new and existing data is always monitored.',
     color: 'emerald',
   },
   {
-    icon: <Database className="w-5 h-5 md:w-6 md:h-6" />,
-    title: 'Universal Database Support',
-    description: 'Scan PostgreSQL, MySQL, MongoDB, Oracle, SQL Server, Snowflake, BigQuery, and more with native connectors.',
+    icon: <Brain className="w-5 h-5 md:w-6 md:h-6" />,
+    title: 'Rule-Based & Pattern-Driven Classification',
+    description: 'Detects PII using deterministic patterns, configurable rules, and jurisdiction-specific identifiers to ensure consistent and explainable results.',
+    items: [
+      'Names and contact details',
+      'Aadhaar, PAN, SSN, Passport numbers',
+      'Financial data (bank accounts, credit cards)',
+      'Date of birth and addresses',
+      'Employee and customer identifiers',
+    ],
+    footnote: 'Supports country-specific IDs and custom patterns to match your organization\'s business context.',
     color: 'teal',
   },
   {
-    icon: <Zap className="w-5 h-5 md:w-6 md:h-6" />,
-    title: 'Real-Time Scanning',
-    description: 'Continuous monitoring with real-time alerts when new PII is detected or data patterns change.',
+    icon: <Layers className="w-5 h-5 md:w-6 md:h-6" />,
+    title: 'Structured & Unstructured Data Coverage',
+    description: 'Detect PII in both structured and unstructured data:',
+    items: [
+      'Databases and application tables',
+      'Logs and audit trails',
+      'PDFs, Word, Excel files',
+      'Emails and chat exports',
+      'Scanned documents (where supported)',
+    ],
+    footnote: 'No blind spots — visibility across all major data formats.',
     color: 'cyan',
   },
   {
-    icon: <Shield className="w-5 h-5 md:w-6 md:h-6" />,
-    title: 'Compliance Ready',
-    description: 'Built-in templates for GDPR, CCPA, HIPAA, PCI-DSS, and SOC 2 compliance requirements.',
+    icon: <BarChart3 className="w-5 h-5 md:w-6 md:h-6" />,
+    title: 'Risk-Based Dashboards & Reports',
+    description: 'Get instant, actionable insights through dashboards and reports that show:',
+    items: [
+      'Types of PII detected',
+      'High-risk locations and users',
+      'Data age and exposure levels',
+      'Compliance posture by regulation',
+      'Trends over time',
+    ],
+    footnote: 'Reports are designed to be audit-ready and exportable for compliance and management review.',
     color: 'amber',
   },
   {
-    icon: <BarChart3 className="w-5 h-5 md:w-6 md:h-6" />,
-    title: 'Risk Assessment',
-    description: 'Automated risk scoring and prioritization helps you focus on the most critical data exposures.',
+    icon: <Cloud className="w-5 h-5 md:w-6 md:h-6" />,
+    title: 'Flexible Deployment Options',
+    description: 'Deploy in the environment that fits your security requirements:',
+    items: [
+      'On-premise',
+      'Private cloud',
+      'Public cloud',
+      'Hybrid environments',
+    ],
+    footnote: 'Scans can be performed within your environment, ensuring full data control and privacy.',
     color: 'rose',
   },
   {
-    icon: <Lock className="w-5 h-5 md:w-6 md:h-6" />,
-    title: 'Data Masking',
-    description: 'Apply automated masking, encryption, or anonymization policies directly from the dashboard.',
+    icon: <Shield className="w-5 h-5 md:w-6 md:h-6" />,
+    title: 'Compliance & Privacy Enablement',
+    description: 'Align with major privacy and security frameworks, including:',
+    items: [
+      'DPDP Act (India)',
+      'GDPR',
+      'ISO 27001 / SOC 2',
+      'HIPAA / PCI-DSS',
+    ],
+    footnote: 'Supports data inventory and mapping, data subject access requests (DSARs), right to erasure and minimization, and evidence collection for audits.',
     color: 'violet',
   },
 ]
@@ -62,14 +109,15 @@ export function FeaturesSection() {
   return (
     <section id="features" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-10 md:mb-16">
           <Badge className="mb-3 md:mb-4" variant="outline">Features</Badge>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4">
-            Everything You Need for
-            <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent"> Data Privacy</span>
+            Powerful PII Discovery. Intelligent Risk Visibility.
+            <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent"> Real Protection.</span>
           </h2>
           <p className="text-base md:text-lg text-muted-foreground">
-            Comprehensive tools to discover, classify, and protect sensitive data.
+            Our PII Scanning platform is designed to help organizations find, understand, and protect personal
+            data across their entire digital ecosystem — accurately, continuously, and at scale.
           </p>
         </div>
 
@@ -84,8 +132,21 @@ export function FeaturesSection() {
                   </div>
                   <CardTitle className="text-lg md:text-xl">{feature.title}</CardTitle>
                 </CardHeader>
-                <CardContent className="p-4 md:p-6 pt-0">
-                  <CardDescription className="text-sm md:text-base">{feature.description}</CardDescription>
+                <CardContent className="p-4 md:p-6 pt-0 space-y-3">
+                  <p className="text-sm md:text-base text-muted-foreground">{feature.description}</p>
+                  <ul className="space-y-1.5">
+                    {feature.items.map((item, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm md:text-base">
+                        <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${colors.bg} ${colors.text} flex-shrink-0 ring-2 ring-current`} />
+                        <span className="text-muted-foreground">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {feature.footnote && (
+                    <p className="text-xs md:text-sm text-muted-foreground/80 italic pt-1 border-t border-border">
+                      {feature.footnote}
+                    </p>
+                  )}
                 </CardContent>
               </Card>
             )

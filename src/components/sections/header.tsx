@@ -5,20 +5,18 @@ import { Button } from '@/components/ui/button'
 import { ShieldCheck, Menu, X } from 'lucide-react'
 import { ResponsiveModal } from '@/components/ui/responsive-modal'
 import { SignupForm } from '@/components/forms/signup-form'
-import { DemoRequestForm } from '@/components/forms/demo-request-form'
 
 const NAV_LINKS = [
+  { href: '#about', label: 'About Us' },
   { href: '#features', label: 'Features' },
-  { href: '#databases', label: 'Databases' },
+  { href: '#ai-detection', label: 'AI Detection' },
   { href: '#pricing', label: 'Pricing' },
-  { href: '#testimonials', label: 'Testimonials' },
-  { href: '#faq', label: 'FAQ' },
+  { href: '#resources', label: 'Resources' },
 ]
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [showSignup, setShowSignup] = useState(false)
-  const [showDemo, setShowDemo] = useState(false)
 
   return (
     <>
@@ -47,13 +45,14 @@ export function Header() {
             </nav>
 
             <div className="hidden lg:flex items-center gap-3">
-              <Button
-                variant="ghost"
-                className="text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-950"
-                onClick={() => setShowDemo(true)}
-              >
-                Request Demo
-              </Button>
+              <a href="/pii-scanner-website/request-demo">
+                <Button
+                  variant="ghost"
+                  className="text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-950"
+                >
+                  Request Demo
+                </Button>
+              </a>
               <Button
                 className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white shadow-lg shadow-emerald-500/25"
                 onClick={() => setShowSignup(true)}
@@ -86,14 +85,16 @@ export function Header() {
                 ))}
               </nav>
               <div className="flex flex-col gap-3 pt-4 mt-4 border-t border-border">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="w-full h-12 text-base"
-                  onClick={() => { setShowDemo(true); setIsMenuOpen(false); }}
-                >
-                  Request Demo
-                </Button>
+                <a href="/pii-scanner-website/request-demo">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="w-full h-12 text-base"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    Request Demo
+                  </Button>
+                </a>
                 <Button
                   size="lg"
                   className="w-full h-12 text-base bg-gradient-to-r from-emerald-500 to-teal-600 text-white"
@@ -114,15 +115,6 @@ export function Header() {
         description="Start your 14-day free trial. No credit card required."
       >
         <SignupForm onSuccess={() => setShowSignup(false)} />
-      </ResponsiveModal>
-
-      <ResponsiveModal
-        open={showDemo}
-        onOpenChange={setShowDemo}
-        title="Request a Demo"
-        description="See PII Scanner in action. Our team will reach out within 24 hours."
-      >
-        <DemoRequestForm onSuccess={() => setShowDemo(false)} />
       </ResponsiveModal>
     </>
   )
