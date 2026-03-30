@@ -1,35 +1,38 @@
 'use client'
 
+import Image from 'next/image'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
-import { Database, Server, Cloud, HardDrive, ChevronRight, Layers, Box, Sparkles } from 'lucide-react'
+import { ChevronRight } from 'lucide-react'
 import { MotionDiv, MotionItem } from '@/components/ui/motion-wrapper'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
 
+const BASE = '/pii-scanner-website'
+
 interface DatabaseInfo {
   name: string
-  icon: React.ReactNode
+  logo: string
   popular?: boolean
   category: 'rdbms' | 'cloud' | 'nosql' | 'vector' | 'object'
 }
 
 const DATABASES: DatabaseInfo[] = [
-  { name: 'PostgreSQL', icon: <Server className="w-6 h-6 md:w-8 md:h-8" />, popular: true, category: 'rdbms' },
-  { name: 'MySQL', icon: <Database className="w-6 h-6 md:w-8 md:h-8" />, popular: true, category: 'rdbms' },
-  { name: 'SQL Server', icon: <Server className="w-6 h-6 md:w-8 md:h-8" />, category: 'rdbms' },
-  { name: 'Oracle', icon: <Database className="w-6 h-6 md:w-8 md:h-8" />, category: 'rdbms' },
-  { name: 'Snowflake', icon: <Cloud className="w-6 h-6 md:w-8 md:h-8" />, popular: true, category: 'cloud' },
-  { name: 'BigQuery', icon: <Cloud className="w-6 h-6 md:w-8 md:h-8" />, popular: true, category: 'cloud' },
-  { name: 'Redshift', icon: <Server className="w-6 h-6 md:w-8 md:h-8" />, category: 'cloud' },
-  { name: 'MongoDB', icon: <HardDrive className="w-6 h-6 md:w-8 md:h-8" />, popular: true, category: 'nosql' },
-  { name: 'Cassandra', icon: <Database className="w-6 h-6 md:w-8 md:h-8" />, category: 'nosql' },
-  { name: 'DynamoDB', icon: <Cloud className="w-6 h-6 md:w-8 md:h-8" />, category: 'nosql' },
-  { name: 'Qdrant', icon: <Layers className="w-6 h-6 md:w-8 md:h-8" />, popular: true, category: 'vector' },
-  { name: 'Milvus', icon: <Layers className="w-6 h-6 md:w-8 md:h-8" />, category: 'vector' },
-  { name: 'Pinecone', icon: <Sparkles className="w-6 h-6 md:w-8 md:h-8" />, category: 'vector' },
-  { name: 'S3', icon: <Box className="w-6 h-6 md:w-8 md:h-8" />, category: 'object' },
-  { name: 'GCS', icon: <Cloud className="w-6 h-6 md:w-8 md:h-8" />, category: 'object' },
-  { name: 'Azure Blob', icon: <Box className="w-6 h-6 md:w-8 md:h-8" />, category: 'object' },
+  { name: 'PostgreSQL', logo: `${BASE}/logos/postgresql.svg`, popular: true, category: 'rdbms' },
+  { name: 'MySQL', logo: `${BASE}/logos/mysql.svg`, popular: true, category: 'rdbms' },
+  { name: 'SQL Server', logo: `${BASE}/logos/sqlserver.svg`, category: 'rdbms' },
+  { name: 'Oracle', logo: `${BASE}/logos/oracle.svg`, category: 'rdbms' },
+  { name: 'Snowflake', logo: `${BASE}/logos/snowflake.svg`, popular: true, category: 'cloud' },
+  { name: 'BigQuery', logo: `${BASE}/logos/bigquery.svg`, popular: true, category: 'cloud' },
+  { name: 'Redshift', logo: `${BASE}/logos/redshift.svg`, category: 'cloud' },
+  { name: 'MongoDB', logo: `${BASE}/logos/mongodb.svg`, popular: true, category: 'nosql' },
+  { name: 'Cassandra', logo: `${BASE}/logos/cassandra.svg`, category: 'nosql' },
+  { name: 'DynamoDB', logo: `${BASE}/logos/dynamodb.svg`, category: 'nosql' },
+  { name: 'Qdrant', logo: `${BASE}/logos/qdrant.svg`, popular: true, category: 'vector' },
+  { name: 'Milvus', logo: `${BASE}/logos/milvus.svg`, category: 'vector' },
+  { name: 'Pinecone', logo: `${BASE}/logos/pinecone.svg`, category: 'vector' },
+  { name: 'S3', logo: `${BASE}/logos/s3.svg`, category: 'object' },
+  { name: 'GCS', logo: `${BASE}/logos/gcs.svg`, category: 'object' },
+  { name: 'Azure Blob', logo: `${BASE}/logos/azureblob.svg`, category: 'object' },
 ]
 
 export function DatabaseSection() {
@@ -54,8 +57,15 @@ export function DatabaseSection() {
                 {db.popular && (
                   <Badge className="absolute -top-2 right-2 bg-emerald-500 text-white text-[10px] md:text-xs px-2">Popular</Badge>
                 )}
-                <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-3 rounded-lg md:rounded-xl bg-muted flex items-center justify-center text-muted-foreground group-hover:text-emerald-600 group-hover:bg-emerald-100 dark:group-hover:bg-emerald-950 transition-colors">
-                  {db.icon}
+                <div className="w-12 h-12 md:w-16 md:h-16 mx-auto mb-2 md:mb-3 rounded-lg md:rounded-xl bg-muted flex items-center justify-center group-hover:bg-emerald-50 dark:group-hover:bg-emerald-950/50 transition-colors">
+                  <Image
+                    src={db.logo}
+                    alt={`${db.name} logo`}
+                    width={40}
+                    height={40}
+                    className="w-7 h-7 md:w-10 md:h-10 object-contain"
+                    unoptimized
+                  />
                 </div>
                 <div className="font-medium text-sm md:text-base">{db.name}</div>
               </div>

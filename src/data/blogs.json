@@ -1,0 +1,398 @@
+[
+  {
+    "title": "ChatGPT and Generative AI: DPDPA Data Protection Risks",
+    "excerpt": "Exploring the data protection risks posed by generative AI tools like ChatGPT under India's DPDPA framework.",
+    "category": "AI",
+    "filterGroup": "tech",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 31, 2026",
+    "href": "https://www.dpdpa.com/blogs/chatgpt_generative_ai_dpdpa_data_protection_risks.html"
+  },
+  {
+    "title": "DPDPA for HR: Employee Data Protection Guide",
+    "excerpt": "Comprehensive guide for HR departments on handling employee personal data in compliance with DPDPA.",
+    "category": "HR",
+    "filterGroup": "industry",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 30, 2026",
+    "href": "https://www.dpdpa.com/blogs/dpdpa_hr_departments_employee_data_protection.html"
+  },
+  {
+    "title": "AI and Machine Learning Compliance Under DPDPA",
+    "excerpt": "How AI and ML systems must adapt to meet DPDPA requirements, including data processing, consent management, and algorithmic transparency.",
+    "category": "AI/ML",
+    "filterGroup": "tech",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 29, 2026",
+    "href": "https://www.dpdpa.com/blogs/ai_machine_learning_dpdpa_compliance_guide.html"
+  },
+  {
+    "title": "Cross-Border Data Transfer Under DPDPA: Complete Guide",
+    "excerpt": "Understanding the rules and mechanisms for transferring personal data across international borders under DPDPA.",
+    "category": "International",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 28, 2026",
+    "href": "https://www.dpdpa.com/blogs/cross_border_data_transfer_dpdpa_guide.html"
+  },
+  {
+    "title": "GDPR vs DPDPA vs CCPA: Complete Comparison",
+    "excerpt": "A comprehensive analysis comparing three major global data protection frameworks and their implications for international organizations.",
+    "category": "Global",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 27, 2026",
+    "href": "https://www.dpdpa.com/blogs/gdpr_vs_dpdpa_vs_ccpa_comprehensive_comparison.html"
+  },
+  {
+    "title": "DPDPA Penalties Explained: Up to Rs 250 Crore Fines",
+    "excerpt": "Detailed breakdown of penalty provisions under DPDPA, including fine amounts and enforcement mechanisms.",
+    "category": "Penalties",
+    "filterGroup": "risk",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 26, 2026",
+    "href": "https://www.dpdpa.com/blogs/dpdpa_penalties_explained_50_crore_250_crore_fines.html"
+  },
+  {
+    "title": "India-EU Data Adequacy: DPDPA vs GDPR Analysis",
+    "excerpt": "Analyzing the potential for India-EU data adequacy decisions and how DPDPA compares with GDPR standards.",
+    "category": "GDPR",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 25, 2026",
+    "href": "https://www.dpdpa.com/blogs/india_eu_data_adequacy_dpdpa_gdpr.html"
+  },
+  {
+    "title": "Facial Recognition Technology Under DPDPA India",
+    "excerpt": "Legal implications and compliance requirements for facial recognition technology deployment under DPDPA.",
+    "category": "Biometric",
+    "filterGroup": "tech",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 24, 2026",
+    "href": "https://www.dpdpa.com/blogs/facial_recognition_technology_frt_dpdpa_india.html"
+  },
+  {
+    "title": "Director's Personal Liability Under DPDPA: CXO Guide",
+    "excerpt": "Understanding personal liability exposure for directors and CXOs under India's data protection law.",
+    "category": "CXO",
+    "filterGroup": "industry",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 23, 2026",
+    "href": "https://www.dpdpa.com/blogs/directors_personal_liability_dpdpa_cxo_responsibility.html"
+  },
+  {
+    "title": "Significant Data Fiduciary (SDF) Under DPDPA: Complete Guide",
+    "excerpt": "Comprehensive guide to understanding SDF classification, obligations, and compliance requirements under DPDPA.",
+    "category": "SDF",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 22, 2026",
+    "href": "https://www.dpdpa.com/blogs/significant_data_fiduciary_sdf_dpdpa_guide.html"
+  },
+  {
+    "title": "Vendor Data Processing Agreement Template for DPDPA",
+    "excerpt": "Template and guidance for creating DPDPA-compliant vendor data processing agreements.",
+    "category": "Vendor",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 21, 2026",
+    "href": "https://www.dpdpa.com/blogs/vendor_data_processing_agreement_dpa_dpdpa_template.html"
+  },
+  {
+    "title": "DPDPA Compliance Checklist 2026: Business Assessment",
+    "excerpt": "A practical step-by-step checklist to help businesses assess and achieve compliance with DPDPA.",
+    "category": "Checklist",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 20, 2026",
+    "href": "https://www.dpdpa.com/blogs/dpdpa_compliance_checklist_2026_business_assessment.html"
+  },
+  {
+    "title": "Data Protection Officer (DPO) Qualifications Under DPDPA",
+    "excerpt": "Requirements, qualifications, and responsibilities for Data Protection Officers under DPDPA.",
+    "category": "DPO",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 19, 2026",
+    "href": "https://www.dpdpa.com/blogs/data_protection_officer_dpo_dpdpa_qualifications.html"
+  },
+  {
+    "title": "WhatsApp Business and DPDPA Compliance Guide",
+    "excerpt": "How businesses using WhatsApp for customer communication can ensure DPDPA compliance.",
+    "category": "Messaging",
+    "filterGroup": "industry",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 18, 2026",
+    "href": "https://www.dpdpa.com/blogs/whatsapp_business_dpdpa_compliance_messaging_apps.html"
+  },
+  {
+    "title": "DPDPA 2027 Deadline: 12-Month Action Plan",
+    "excerpt": "A structured 12-month action plan to achieve full DPDPA compliance before the 2027 deadline.",
+    "category": "Deadline",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 17, 2026",
+    "href": "https://www.dpdpa.com/blogs/dpdpa_compliance_deadline_2027_12_month_action_plan.html"
+  },
+  {
+    "title": "Data Protection Board of India: Powers and Procedures",
+    "excerpt": "Understanding the powers, procedures, and enforcement role of the Data Protection Board of India.",
+    "category": "DPBI",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 16, 2026",
+    "href": "https://www.dpdpa.com/blogs/data_protection_board_india_dpbi_powers_procedures.html"
+  },
+  {
+    "title": "DPDPA-Compliant Privacy Policy Template Guide",
+    "excerpt": "Step-by-step guide to creating a privacy policy that meets all DPDPA requirements.",
+    "category": "Template",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 14, 2026",
+    "href": "https://www.dpdpa.com/blogs/dpdpa_compliant_privacy_policy_template_guide.html"
+  },
+  {
+    "title": "Data Protection Audit Requirements for SDFs Under DPDPA",
+    "excerpt": "Audit requirements and best practices for Significant Data Fiduciaries under DPDPA.",
+    "category": "Audit",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 13, 2026",
+    "href": "https://www.dpdpa.com/blogs/data_protection_audit_dpdpa_sdf_requirements.html"
+  },
+  {
+    "title": "DPDPA for Healthcare: Hospital Compliance Guide",
+    "excerpt": "Essential compliance guidance for healthcare organizations managing sensitive patient data under DPDPA.",
+    "category": "Healthcare",
+    "filterGroup": "industry",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 11, 2026",
+    "href": "https://www.dpdpa.com/blogs/dpdpa_compliance_healthcare_hospitals_guide.html"
+  },
+  {
+    "title": "Data Principal vs Data Subject: DPDPA Terminology Explained",
+    "excerpt": "Clarifying the key terminology differences between DPDPA and other global data protection frameworks.",
+    "category": "Terminology",
+    "filterGroup": "rights",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 10, 2026",
+    "href": "https://www.dpdpa.com/blogs/data_principal_data_subject_dpdpa_terminology_guide.html"
+  },
+  {
+    "title": "DPDPA for Banks and NBFCs: Financial Data Protection",
+    "excerpt": "Industry-specific guidance for banking and financial institutions on safeguarding customer data under DPDPA.",
+    "category": "Banking",
+    "filterGroup": "industry",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 8, 2026",
+    "href": "https://www.dpdpa.com/blogs/dpdpa_banks_nbfcs_financial_data_protection.html"
+  },
+  {
+    "title": "72-Hour Data Breach Response Plan Under DPDPA",
+    "excerpt": "How to prepare and execute a 72-hour data breach notification and response plan as required by DPDPA.",
+    "category": "Breach",
+    "filterGroup": "risk",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 7, 2026",
+    "href": "https://www.dpdpa.com/blogs/data_breach_response_plan_dpdpa_72_hours.html"
+  },
+  {
+    "title": "DPDPA for E-commerce: Customer Data Compliance",
+    "excerpt": "Compliance requirements for e-commerce platforms handling customer personal data under DPDPA.",
+    "category": "E-commerce",
+    "filterGroup": "industry",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 5, 2026",
+    "href": "https://www.dpdpa.com/blogs/dpdpa_ecommerce_compliance_customer_data.html"
+  },
+  {
+    "title": "How to Choose a Consent Management Platform for DPDPA",
+    "excerpt": "Key features and evaluation criteria for selecting a DPDPA-compliant consent management platform.",
+    "category": "CMP",
+    "filterGroup": "rights",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 4, 2026",
+    "href": "https://www.dpdpa.com/blogs/consent_management_platform_cmp_dpdpa_selection_guide.html"
+  },
+  {
+    "title": "DPDPA for EdTech: Student Data Protection Guide",
+    "excerpt": "Guide for educational technology companies on protecting student personal data under DPDPA.",
+    "category": "EdTech",
+    "filterGroup": "industry",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 2, 2026",
+    "href": "https://www.dpdpa.com/blogs/dpdpa_edtech_platforms_student_data_protection.html"
+  },
+  {
+    "title": "Data Erasure and Certification Under DPDPA",
+    "excerpt": "Understanding data erasure requirements and certification processes mandated by DPDPA.",
+    "category": "Erasure",
+    "filterGroup": "rights",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jul 15, 2025",
+    "href": "https://www.dpdpa.com/blogs/dataerasureandcertificationunderdpdpa.html"
+  },
+  {
+    "title": "The DPDPA Conundrum for Indian SMEs",
+    "excerpt": "Challenges and practical solutions for small and medium enterprises navigating DPDPA compliance.",
+    "category": "SME",
+    "filterGroup": "industry",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Apr 14, 2025",
+    "href": "https://www.dpdpa.com/blogs/The_DPDPA_Conundrum_for_Indian_SMEs.html"
+  },
+  {
+    "title": "Understanding the Role of Consent Manager Under DPDPA",
+    "excerpt": "The role, responsibilities, and regulatory requirements for Consent Managers under DPDPA.",
+    "category": "Consent",
+    "filterGroup": "rights",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 9, 2025",
+    "href": "https://www.dpdpa.com/blogs/Understanding_Role_of_a_Consent_Manager_Under_DPDPA_and_DPDP_Rules.html"
+  },
+  {
+    "title": "Children of Illiterate Parents Banned from Social Media?",
+    "excerpt": "Analysis of DPDPA provisions regarding children's data protection and parental consent requirements.",
+    "category": "Children",
+    "filterGroup": "rights",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jan 6, 2025",
+    "href": "https://www.dpdpa.com/blogs/childrens_of_illiterate_parents_banned_from_social_media.html"
+  },
+  {
+    "title": "Demystifying DPIA in DPDPA 2023",
+    "excerpt": "Understanding Data Protection Impact Assessments and their role in DPDPA compliance.",
+    "category": "DPIA",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Dec 8, 2024",
+    "href": "https://www.dpdpa.com/blogs/demystifying_dpia_in_dpdpa.html"
+  },
+  {
+    "title": "Compensation for Victims of Data Breach Under DPDPA",
+    "excerpt": "Legal provisions and mechanisms for victims of data breaches to seek compensation under DPDPA.",
+    "category": "Compensation",
+    "filterGroup": "rights",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Dec 8, 2024",
+    "href": "https://www.dpdpa.com/blogs/compensation_for_victims_of_data_breach_under_dpdpa.html"
+  },
+  {
+    "title": "Right to Access Personal Data Under DPDPA 2023",
+    "excerpt": "Understanding the right of data principals to access their personal data held by data fiduciaries.",
+    "category": "Rights",
+    "filterGroup": "rights",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Dec 2, 2024",
+    "href": "https://www.dpdpa.com/blogs/blog2.html"
+  },
+  {
+    "title": "How Fingerprint Scanners May Violate DPDPA",
+    "excerpt": "Legal analysis of fingerprint scanner usage and potential DPDPA violations in biometric data collection.",
+    "category": "Biometric",
+    "filterGroup": "tech",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Dec 1, 2024",
+    "href": "https://www.dpdpa.com/blogs/blog1.html"
+  },
+  {
+    "title": "Criminal Liabilities for Data Theft and Breach in India",
+    "excerpt": "Overview of criminal liability provisions for data theft and breaches under Indian law and DPDPA.",
+    "category": "Criminal",
+    "filterGroup": "risk",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Nov 27, 2024",
+    "href": "https://www.dpdpa.com/blogs/criminal_liabilities_for_data_theft_and_data_breach_in_india.html"
+  },
+  {
+    "title": "Right to be Forgotten Under DPDPA - Case Laws Explained",
+    "excerpt": "Exploring the right to be forgotten under DPDPA with relevant case law analysis.",
+    "category": "Rights",
+    "filterGroup": "rights",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Nov 3, 2024",
+    "href": "https://www.dpdpa.com/blogs/righttobeforgottendpdpa.html"
+  },
+  {
+    "title": "Challenges and Implications of India's DPDPA",
+    "excerpt": "Critical analysis of the challenges organizations face in implementing DPDPA requirements.",
+    "category": "Challenges",
+    "filterGroup": "risk",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Oct 12, 2024",
+    "href": "https://www.dpdpa.com/blogs/Challenges_Implications_of_india's_dpdpa.html"
+  },
+  {
+    "title": "Requirements for Drafting Compliance Privacy Notice",
+    "excerpt": "Essential requirements and best practices for drafting a DPDPA-compliant privacy notice.",
+    "category": "Notice",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Oct 12, 2024",
+    "href": "https://www.dpdpa.com/blogs/requirements_drafting_compliance_privacy_notice.html"
+  },
+  {
+    "title": "Data Breach Reporting in India",
+    "excerpt": "Comprehensive guide to data breach reporting obligations and procedures in India under DPDPA.",
+    "category": "Breach",
+    "filterGroup": "risk",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Oct 2, 2024",
+    "href": "https://www.dpdpa.com/blogs/databreachreporting.html"
+  },
+  {
+    "title": "Data Principal Rights Under DPDPA",
+    "excerpt": "Complete overview of the rights granted to data principals under India's DPDPA.",
+    "category": "Rights",
+    "filterGroup": "rights",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Sep 15, 2024",
+    "href": "https://www.dpdpa.com/blogs/dataprincipalrightsunderdpdpa.html"
+  },
+  {
+    "title": "Cookie Scanner Compliance Under DPDPA",
+    "excerpt": "How cookie scanners and consent banners must comply with DPDPA data collection requirements.",
+    "category": "Cookies",
+    "filterGroup": "rights",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Aug 22, 2024",
+    "href": "https://www.dpdpa.com/blogs/cookie_scanner_compliance.html"
+  },
+  {
+    "title": "CONSENT Under DPDPA - Comprehensive Understanding",
+    "excerpt": "Deep dive into the consent framework under DPDPA including valid consent requirements and exceptions.",
+    "category": "Consent",
+    "filterGroup": "rights",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Aug 2, 2024",
+    "href": "https://www.dpdpa.com/blogs/consentunderdpdpa.html"
+  },
+  {
+    "title": "Opportunities for Small Business in DPDPA",
+    "excerpt": "How small businesses can leverage DPDPA compliance as a competitive advantage.",
+    "category": "Business",
+    "filterGroup": "industry",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jul 14, 2024",
+    "href": "https://www.dpdpa.com/blogs/opportunities_small_business_dpdpa.html"
+  },
+  {
+    "title": "The Uniform Data Protection Dilemma",
+    "excerpt": "Analysis of the challenges in creating uniform data protection standards across jurisdictions.",
+    "category": "Policy",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jul 14, 2024",
+    "href": "https://www.dpdpa.com/blogs/the_uniform_data_protection_dilemma.html"
+  },
+  {
+    "title": "Steps to Comply with DPDPA 2023 Guide",
+    "excerpt": "Practical step-by-step guide for organizations beginning their DPDPA compliance journey.",
+    "category": "Guide",
+    "filterGroup": "compliance",
+    "author": "Advocate (Dr.) Prashant Mali",
+    "date": "Jun 12, 2024",
+    "href": "https://www.dpdpa.com/blogs/ten_steps_comply_with_dpdpa_guide.html"
+  }
+]
