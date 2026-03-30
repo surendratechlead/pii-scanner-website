@@ -1,5 +1,9 @@
+'use client'
+
 import { Badge } from '@/components/ui/badge'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { MotionDiv, MotionItem } from '@/components/ui/motion-wrapper'
+import { fadeInUp, staggerContainer } from '@/lib/animations'
 
 interface FAQ {
   question: string
@@ -37,7 +41,7 @@ export function FAQSection() {
   return (
     <section id="faq" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
+        <MotionDiv variants={fadeInUp} className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
           <Badge className="mb-3 md:mb-4" variant="outline">FAQ</Badge>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4">
             Frequently Asked
@@ -46,22 +50,24 @@ export function FAQSection() {
           <p className="text-base md:text-lg text-muted-foreground">
             Everything you need to know about PII Scanner.
           </p>
-        </div>
+        </MotionDiv>
 
-        <div className="max-w-3xl mx-auto">
+        <MotionDiv variants={staggerContainer} className="max-w-3xl mx-auto">
           <Accordion type="single" collapsible className="space-y-3 md:space-y-4">
             {FAQS.map((faq, i) => (
-              <AccordionItem key={i} value={`item-${i}`} className="bg-card border-2 rounded-lg px-4 md:px-6">
-                <AccordionTrigger className="text-left font-medium text-sm md:text-base hover:text-emerald-600 py-4 md:py-5">
-                  {faq.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-xs md:text-base text-muted-foreground pb-4 md:pb-5">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
+              <MotionItem key={i} variants={fadeInUp}>
+                <AccordionItem value={`item-${i}`} className="bg-card border-2 rounded-lg px-4 md:px-6 hover:shadow-md transition-shadow">
+                  <AccordionTrigger className="text-left font-medium text-sm md:text-base hover:text-emerald-600 py-4 md:py-5">
+                    {faq.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-xs md:text-base text-muted-foreground pb-4 md:pb-5">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </MotionItem>
             ))}
           </Accordion>
-        </div>
+        </MotionDiv>
       </div>
     </section>
   )

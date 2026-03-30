@@ -1,4 +1,8 @@
+'use client'
+
 import { ShieldCheck } from 'lucide-react'
+import { MotionDiv } from '@/components/ui/motion-wrapper'
+import { fadeInUp } from '@/lib/animations'
 
 const FOOTER_LINKS = {
   Product: [
@@ -9,9 +13,10 @@ const FOOTER_LINKS = {
     { label: 'Integrations', href: '#integrations' },
   ],
   Resources: [
-    { label: 'Blogs', href: '#' },
+    { label: 'Blogs', href: '#blog' },
     { label: 'Case Studies', href: '#' },
     { label: 'Whitepapers', href: '#' },
+    { label: 'DPDPA Blog', href: 'https://www.dpdpa.com/blog.html', external: true },
     { label: 'Documentation', href: '#' },
     { label: 'Support', href: '#' },
   ],
@@ -40,59 +45,65 @@ const SOCIAL_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="bg-muted/50 border-t border-border py-12 md:py-16 mt-auto">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-8 mb-8 md:mb-12">
-          <div className="col-span-2">
-            <div className="flex items-center gap-2 mb-3 md:mb-4">
-              <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20">
-                <ShieldCheck className="w-4 h-4 md:w-6 md:h-6 text-white" />
+    <MotionDiv variants={fadeInUp}>
+      <footer className="bg-muted/50 border-t border-border py-12 md:py-16 mt-auto">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-8 mb-8 md:mb-12">
+            <div className="col-span-2">
+              <div className="flex items-center gap-2 mb-3 md:mb-4">
+                <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20">
+                  <ShieldCheck className="w-4 h-4 md:w-6 md:h-6 text-white" />
+                </div>
+                <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+                  PII Scanner
+                </span>
               </div>
-              <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                PII Scanner
-              </span>
-            </div>
-            <p className="text-xs md:text-sm text-muted-foreground mb-4 md:mb-6 max-w-sm">
-              Enterprise-grade PII detection and protection for all your databases. Stay compliant, stay secure.
-            </p>
-            <div className="flex items-center gap-3 md:gap-4">
-              {SOCIAL_LINKS.map((social) => (
-                <a key={social.label} href="#" className="text-muted-foreground hover:text-foreground p-1" aria-label={social.label}>
-                  <svg className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d={social.path} />
-                  </svg>
-                </a>
-              ))}
-            </div>
-          </div>
-
-          {Object.entries(FOOTER_LINKS).map(([title, links]) => (
-            <div key={title}>
-              <h4 className="font-semibold mb-3 md:mb-4 text-sm md:text-base">{title}</h4>
-              <ul className="space-y-2 md:space-y-3">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <a href={link.href} className="text-xs md:text-sm text-muted-foreground hover:text-foreground">
-                      {link.label}
-                    </a>
-                  </li>
+              <p className="text-xs md:text-sm text-muted-foreground mb-4 md:mb-6 max-w-sm">
+                Enterprise-grade PII detection and protection for all your databases. Stay compliant, stay secure.
+              </p>
+              <div className="flex items-center gap-3 md:gap-4">
+                {SOCIAL_LINKS.map((social) => (
+                  <a key={social.label} href="#" className="text-muted-foreground hover:text-emerald-600 transition-colors p-1" aria-label={social.label}>
+                    <svg className="w-4 h-4 md:w-5 md:h-5" fill="currentColor" viewBox="0 0 24 24">
+                      <path d={social.path} />
+                    </svg>
+                  </a>
                 ))}
-              </ul>
+              </div>
             </div>
-          ))}
-        </div>
 
-        <div className="pt-6 md:pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs md:text-sm text-muted-foreground text-center md:text-left">
-            &copy; {new Date().getFullYear()} PII Scanner. All rights reserved.
-          </p>
-          <div className="flex items-center gap-4 md:gap-6 text-xs md:text-sm text-muted-foreground">
-            <a href="#" className="hover:text-foreground">Privacy Policy</a>
-            <a href="#" className="hover:text-foreground">Terms of Service</a>
-            <a href="#" className="hover:text-foreground hidden sm:inline">Cookie Policy</a>
+            {Object.entries(FOOTER_LINKS).map(([title, links]) => (
+              <div key={title}>
+                <h4 className="font-semibold mb-3 md:mb-4 text-sm md:text-base">{title}</h4>
+                <ul className="space-y-2 md:space-y-3">
+                  {links.map((link) => (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        {...('external' in link && link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                        className="relative text-xs md:text-sm text-muted-foreground hover:text-foreground transition-colors after:absolute after:left-0 after:bottom-[-2px] after:h-[1px] after:w-0 after:bg-emerald-500 after:transition-all after:duration-300 hover:after:w-full"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="pt-6 md:pt-8 border-t border-border flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-xs md:text-sm text-muted-foreground text-center md:text-left">
+              &copy; {new Date().getFullYear()} PII Scanner. All rights reserved.
+            </p>
+            <div className="flex items-center gap-4 md:gap-6 text-xs md:text-sm text-muted-foreground">
+              <a href="#" className="hover:text-foreground transition-colors relative after:absolute after:left-0 after:bottom-[-2px] after:h-[1px] after:w-0 after:bg-emerald-500 after:transition-all after:duration-300 hover:after:w-full">Privacy Policy</a>
+              <a href="#" className="hover:text-foreground transition-colors relative after:absolute after:left-0 after:bottom-[-2px] after:h-[1px] after:w-0 after:bg-emerald-500 after:transition-all after:duration-300 hover:after:w-full">Terms of Service</a>
+              <a href="#" className="hover:text-foreground transition-colors relative after:absolute after:left-0 after:bottom-[-2px] after:h-[1px] after:w-0 after:bg-emerald-500 after:transition-all after:duration-300 hover:after:w-full hidden sm:inline">Cookie Policy</a>
+            </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </MotionDiv>
   )
 }

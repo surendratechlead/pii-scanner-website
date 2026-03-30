@@ -1,12 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { ArrowRight, Play, Sparkles, Scan, FileSearch, Shield, Check } from 'lucide-react'
 import { ResponsiveModal } from '@/components/ui/responsive-modal'
 import { SignupForm } from '@/components/forms/signup-form'
 import { DemoRequestForm } from '@/components/forms/demo-request-form'
+import { fadeInUp, staggerContainer } from '@/lib/animations'
 
 const STATS = [
   { value: '50B+', label: 'Records Scanned' },
@@ -23,34 +25,47 @@ export function HeroSection() {
   const [showDemo, setShowDemo] = useState(false)
 
   return (
-    <section className="relative pt-24 pb-12 md:pt-32 md:pb-20 overflow-hidden">
+    <section className="relative pt-36 pb-12 md:pt-44 md:pb-20 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/50 via-transparent to-transparent dark:from-emerald-950/20" />
-      <div className="absolute top-20 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-emerald-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-teal-500/10 rounded-full blur-3xl" />
+      <motion.div
+        className="absolute top-20 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-emerald-500/10 rounded-full blur-3xl"
+        animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
+        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
+      />
+      <motion.div
+        className="absolute bottom-0 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-teal-500/10 rounded-full blur-3xl"
+        animate={{ scale: [1.1, 1, 1.1], opacity: [0.6, 0.4, 0.6] }}
+        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
+      />
 
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:48px_48px]" />
 
       <div className="container mx-auto px-4 relative">
-        <div className="max-w-5xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-emerald-100 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 mb-6 md:mb-8">
+        <motion.div
+          className="max-w-5xl mx-auto text-center"
+          initial="hidden"
+          animate="visible"
+          variants={staggerContainer}
+        >
+          <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-emerald-100 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 mb-6 md:mb-8">
             <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-emerald-600" />
             <span className="text-xs md:text-sm font-medium text-emerald-700 dark:text-emerald-400">Trusted by 500+ enterprises worldwide</span>
-          </div>
+          </motion.div>
 
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 md:mb-6 px-2">
+          <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 md:mb-6 px-2">
             <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
               Protect Sensitive Data
             </span>
             <br />
             <span className="text-foreground">Across All Your Databases</span>
-          </h1>
+          </motion.h1>
 
-          <p className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 md:mb-10 px-4">
+          <motion.p variants={fadeInUp} className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 md:mb-10 px-4">
             AI-powered PII scanning that automatically detects, classifies, and helps you protect
             personally identifiable information across your entire database infrastructure.
-          </p>
+          </motion.p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-12 md:mb-16 px-4">
+          <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-12 md:mb-16 px-4">
             <Button
               size="lg"
               className="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white shadow-xl shadow-emerald-500/25 px-6 md:px-8 h-12 md:h-14 text-base md:text-lg"
@@ -69,24 +84,28 @@ export function HeroSection() {
               <Play className="mr-2 w-4 h-4 md:w-5 md:h-5" />
               Watch Demo
             </Button>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto px-2">
+          <motion.div variants={fadeInUp} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto px-2">
             {STATS.map((stat, i) => (
-              <div key={i} className="text-center p-3 md:p-4 rounded-xl bg-background/50 backdrop-blur-sm">
+              <div key={i} className="text-center p-3 md:p-4 rounded-xl bg-background/50 backdrop-blur-sm border border-border/50 hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors">
                 <div className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
                   {stat.value}
                 </div>
                 <div className="text-xs md:text-sm text-muted-foreground mt-1">{stat.label}</div>
               </div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* Dashboard Preview */}
-        <div className="mt-12 md:mt-20 relative px-2 md:px-4">
+        <motion.div
+          className="mt-12 md:mt-20 relative px-2 md:px-4"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
+        >
           <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 pointer-events-none" />
-          <div className="relative bg-gradient-to-b from-emerald-100 to-teal-100 dark:from-emerald-950/50 dark:to-teal-950/50 rounded-xl md:rounded-2xl border border-emerald-200 dark:border-emerald-800 shadow-2xl overflow-hidden">
+          <div className="relative bg-gradient-to-b from-emerald-100 to-teal-100 dark:from-emerald-950/50 dark:to-teal-950/50 rounded-xl md:rounded-2xl border border-emerald-200 dark:border-emerald-800 shadow-2xl overflow-hidden animate-float">
             <div className="p-2 border-b border-emerald-200 dark:border-emerald-800 flex items-center gap-2">
               <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-400" />
               <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-yellow-400" />
@@ -152,7 +171,7 @@ export function HeroSection() {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <ResponsiveModal

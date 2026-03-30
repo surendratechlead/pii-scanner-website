@@ -1,6 +1,10 @@
+'use client'
+
 import { Badge } from '@/components/ui/badge'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Search, Brain, Layers, BarChart3, Cloud, Shield } from 'lucide-react'
+import { MotionDiv, MotionItem } from '@/components/ui/motion-wrapper'
+import { fadeInUp, staggerContainer } from '@/lib/animations'
 
 interface Feature {
   icon: React.ReactNode
@@ -109,7 +113,7 @@ export function FeaturesSection() {
   return (
     <section id="features" className="py-16 md:py-24 bg-muted/30">
       <div className="container mx-auto px-4">
-        <div className="text-center max-w-4xl mx-auto mb-10 md:mb-16">
+        <MotionDiv variants={fadeInUp} className="text-center max-w-4xl mx-auto mb-10 md:mb-16">
           <Badge className="mb-3 md:mb-4" variant="outline">Features</Badge>
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4">
             Powerful PII Discovery. Intelligent Risk Visibility.
@@ -119,39 +123,41 @@ export function FeaturesSection() {
             Our PII Scanning platform is designed to help organizations find, understand, and protect personal
             data across their entire digital ecosystem — accurately, continuously, and at scale.
           </p>
-        </div>
+        </MotionDiv>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+        <MotionDiv variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           {FEATURES.map((feature, i) => {
             const colors = COLOR_CLASSES[feature.color]
             return (
-              <Card key={i} className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-emerald-200 dark:hover:border-emerald-800">
-                <CardHeader className="p-4 md:p-6">
-                  <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl ${colors.bg} flex items-center justify-center ${colors.text} mb-3 md:mb-4 group-hover:scale-110 transition-transform`}>
-                    {feature.icon}
-                  </div>
-                  <CardTitle className="text-lg md:text-xl">{feature.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="p-4 md:p-6 pt-0 space-y-3">
-                  <p className="text-sm md:text-base text-muted-foreground">{feature.description}</p>
-                  <ul className="space-y-1.5">
-                    {feature.items.map((item, j) => (
-                      <li key={j} className="flex items-start gap-2 text-sm md:text-base">
-                        <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${colors.bg} ${colors.text} flex-shrink-0 ring-2 ring-current`} />
-                        <span className="text-muted-foreground">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  {feature.footnote && (
-                    <p className="text-xs md:text-sm text-muted-foreground/80 italic pt-1 border-t border-border">
-                      {feature.footnote}
-                    </p>
-                  )}
-                </CardContent>
-              </Card>
+              <MotionItem key={i} variants={fadeInUp}>
+                <Card className="group h-full hover:shadow-xl hover:-translate-y-1 transition-all duration-300 border-2 hover:border-emerald-200 dark:hover:border-emerald-800">
+                  <CardHeader className="p-4 md:p-6">
+                    <div className={`w-10 h-10 md:w-12 md:h-12 rounded-xl ${colors.bg} flex items-center justify-center ${colors.text} mb-3 md:mb-4 group-hover:scale-110 transition-transform`}>
+                      {feature.icon}
+                    </div>
+                    <CardTitle className="text-lg md:text-xl">{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-4 md:p-6 pt-0 space-y-3">
+                    <p className="text-sm md:text-base text-muted-foreground">{feature.description}</p>
+                    <ul className="space-y-1.5">
+                      {feature.items.map((item, j) => (
+                        <li key={j} className="flex items-start gap-2 text-sm md:text-base">
+                          <span className={`mt-1.5 w-1.5 h-1.5 rounded-full ${colors.bg} ${colors.text} flex-shrink-0 ring-2 ring-current`} />
+                          <span className="text-muted-foreground">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                    {feature.footnote && (
+                      <p className="text-xs md:text-sm text-muted-foreground/80 italic pt-1 border-t border-border">
+                        {feature.footnote}
+                      </p>
+                    )}
+                  </CardContent>
+                </Card>
+              </MotionItem>
             )
           })}
-        </div>
+        </MotionDiv>
       </div>
     </section>
   )
