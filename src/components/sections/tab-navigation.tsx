@@ -42,6 +42,32 @@ export function TabNavigation() {
           className="flex items-center gap-1 py-3 overflow-x-auto scrollbar-hide"
           role="tablist"
           aria-label="Page sections"
+          onKeyDown={(e) => {
+            const currentIndex = TABS.findIndex((tab) => tab.id === activeId)
+            let newIndex = currentIndex
+
+            if (e.key === 'ArrowRight' || e.key === 'ArrowDown') {
+              e.preventDefault()
+              newIndex = (currentIndex + 1) % TABS.length
+            } else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') {
+              e.preventDefault()
+              newIndex = (currentIndex - 1 + TABS.length) % TABS.length
+            } else if (e.key === 'Home') {
+              e.preventDefault()
+              newIndex = 0
+            } else if (e.key === 'End') {
+              e.preventDefault()
+              newIndex = TABS.length - 1
+            }
+
+            if (newIndex !== currentIndex) {
+              const newTab = TABS[newIndex]
+              handleTabClick(newTab.id)
+              setTimeout(() => {
+                ;(containerRef.current?.querySelector(`[role="tab"][data-active="true"]`) as HTMLElement)?.focus()
+              }, 100)
+            }
+          }}
         >
           {TABS.map((tab) => {
             const Icon = tab.icon

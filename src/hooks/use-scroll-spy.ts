@@ -56,7 +56,8 @@ export function useScrollSpy(
       if (el) {
         setTimeout(() => {
           const y = el.getBoundingClientRect().top + window.scrollY - offset
-          window.scrollTo({ top: y, behavior: 'smooth' })
+          const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          window.scrollTo({ top: y, behavior: prefersReducedMotion ? 'auto' : 'smooth' })
         }, 100)
       }
     }
@@ -70,6 +71,10 @@ export function scrollToSection(sectionId: string, offset = 120): void {
   const el = document.getElementById(sectionId)
   if (el) {
     const y = el.getBoundingClientRect().top + window.scrollY - offset
-    window.scrollTo({ top: y, behavior: 'smooth' })
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    window.scrollTo({
+      top: y,
+      behavior: prefersReducedMotion ? 'auto' : 'smooth',
+    })
   }
 }
