@@ -2,7 +2,7 @@
 
 import { useScrollSpy, scrollToSection } from '@/hooks/use-scroll-spy'
 import { Info, Layers, Sparkles, DollarSign, BookOpen, FileText } from 'lucide-react'
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 
 const TABS = [
   { id: 'about', label: 'About', icon: Info },
@@ -19,6 +19,13 @@ export function TabNavigation() {
   const sectionIds = TABS.map((tab) => tab.id)
   const activeId = useScrollSpy(sectionIds, { offset: SCROLL_OFFSET })
   const containerRef = useRef<HTMLDivElement>(null)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 100)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   const handleTabClick = (id: string) => {
     scrollToSection(id, SCROLL_OFFSET)
@@ -35,7 +42,9 @@ export function TabNavigation() {
   return (
     <div
       ref={containerRef}
-      className="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm"
+      className={`sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b transition-shadow duration-300 ${
+        scrolled ? 'shadow-md border-slate-200' : 'border-transparent'
+      }`}
     >
       <div className="container mx-auto px-4">
         <nav
