@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card'
 import { BookOpen, FileText, File, Users, BookMarked, Headphones, ClipboardList } from 'lucide-react'
 import { MotionDiv, MotionItem } from '@/components/ui/motion-wrapper'
 import { fadeInUp, staggerContainer } from '@/lib/animations'
+import Image from 'next/image'
 
 interface Resource {
   icon: React.ReactNode
@@ -80,16 +81,29 @@ export function ResourcesSection() {
   return (
     <section id="resources" className="py-16 md:py-24">
       <div className="container mx-auto px-4">
-        <MotionDiv variants={fadeInUp} className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
-          <Badge className="mb-3 md:mb-4" variant="outline">Resources</Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4">
-            Learn, Explore &
-            <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent"> Get Support</span>
-          </h2>
-          <p className="text-base md:text-lg text-muted-foreground">
-            Access guides, case studies, and expert resources to get the most out of PII Scanner.
-          </p>
-        </MotionDiv>
+        <div className="max-w-6xl mx-auto mb-10 md:mb-16">
+          <div className="grid md:grid-cols-[1fr_auto] gap-8 items-center">
+            <MotionDiv variants={fadeInUp} className="text-center md:text-left">
+              <Badge className="mb-3 md:mb-4" variant="outline">Resources</Badge>
+              <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4">
+                Learn, Explore &
+                <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent"> Get Support</span>
+              </h2>
+              <p className="text-base md:text-lg text-muted-foreground">
+                Access guides, case studies, and expert resources to get the most out of PII Scanner.
+              </p>
+            </MotionDiv>
+            <MotionDiv variants={fadeInUp}>
+              <Image
+                src="/images/sections/resources-illustration.svg"
+                alt="Documentation and resources illustration"
+                width={500}
+                height={375}
+                className="w-64 md:w-80 h-auto"
+              />
+            </MotionDiv>
+          </div>
+        </div>
 
         <MotionDiv variants={staggerContainer} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
           {RESOURCES.map((resource, i) => {
