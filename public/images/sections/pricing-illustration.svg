@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 225" fill="none">
+  <defs>
+    <linearGradient id="p1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0.04"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="225" fill="url(#p1)" rx="12"/>
+  <circle cx="200" cy="112" r="80" stroke="#10b981" stroke-width="1.5" opacity="0.2" stroke-dasharray="8 4"/>
+  <circle cx="200" cy="112" r="55" stroke="#06b6d4" stroke-width="1.5" opacity="0.3" stroke-dasharray="6 3"/>
+  <circle cx="200" cy="112" r="30" fill="#10b981" opacity="0.15" stroke="#10b981" stroke-width="2"/>
+  <path d="M190 112 L198 120 L212 104" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="50" y="40" width="60" height="24" rx="12" fill="#f59e0b" opacity="0.8"/>
+  <text x="80" y="56" text-anchor="middle" font-size="10" fill="white" font-weight="600">Basic</text>
+  <rect x="290" y="50" width="70" height="24" rx="12" fill="#10b981" opacity="0.8"/>
+  <text x="325" y="66" text-anchor="middle" font-size="10" fill="white" font-weight="600">Pro</text>
+  <rect x="60" y="170" width="80" height="24" rx="12" fill="#8b5cf6" opacity="0.7"/>
+  <text x="100" y="186" text-anchor="middle" font-size="10" fill="white" font-weight="600">Enterprise</text>
+</svg>
