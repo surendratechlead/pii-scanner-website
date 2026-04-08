@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" fill="none">
+  <rect width="1200" height="675" fill="#0f172a" rx="12"/>
+  <rect x="0" y="0" width="1200" height="48" fill="#1e293b" rx="12"/>
+  <rect x="0" y="36" width="1200" height="12" fill="#1e293b"/>
+  <circle cx="24" cy="24" r="6" fill="#ef4444"/>
+  <circle cx="44" cy="24" r="6" fill="#f59e0b"/>
+  <circle cx="64" cy="24" r="6" fill="#10b981"/>
+  <text x="90" y="29" fill="#94a3b8" font-size="13" font-family="system-ui">PII Scanner — Dashboard</text>
+  <rect x="0" y="48" width="200" height="627" fill="#1e293b"/>
+  <text x="20" y="80" fill="#64748b" font-size="11" font-family="system-ui">NAVIGATION</text>
+  <rect x="12" y="95" width="176" height="32" rx="6" fill="#10b981" opacity="0.2"/>
+  <text x="24" y="115" fill="#10b981" font-size="12" font-family="system-ui" font-weight="500">Dashboard</text>
+  <rect x="12" y="135" width="176" height="32" rx="6"/>
+  <text x="24" y="155" fill="#94a3b8" font-size="12" font-family="system-ui">Scan Results</text>
+  <rect x="12" y="175" width="176" height="32" rx="6"/>
+  <text x="24" y="195" fill="#94a3b8" font-size="12" font-family="system-ui">PII Types</text>
+  <rect x="12" y="215" width="176" height="32" rx="6"/>
+  <text x="24" y="235" fill="#94a3b8" font-size="12" font-family="system-ui">Risk Assessment</text>
+  <rect x="12" y="255" width="176" height="32" rx="6"/>
+  <text x="24" y="275" fill="#94a3b8" font-size="12" font-family="system-ui">Compliance</text>
+  <text x="230" y="85" fill="#f1f5f9" font-size="18" font-family="system-ui" font-weight="600">Scan Summary</text>
+  <rect x="230" y="105" width="220" height="80" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="245" y="130" fill="#94a3b8" font-size="12" font-family="system-ui">Total Records Scanned</text>
+  <text x="245" y="165" fill="#f1f5f9" font-size="24" font-family="system-ui" font-weight="700">2,456,789</text>
+  <rect x="470" y="105" width="220" height="80" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="485" y="130" fill="#94a3b8" font-size="12" font-family="system-ui">PII Detected</text>
+  <text x="485" y="165" fill="#f59e0b" font-size="24" font-family="system-ui" font-weight="700">12,456</text>
+  <rect x="710" y="105" width="220" height="80" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="725" y="130" fill="#94a3b8" font-size="12" font-family="system-ui">Risk Score</text>
+  <rect x="725" y="145" width="80" height="24" rx="12" fill="#ef4444" opacity="0.2"/>
+  <text x="765" y="162" fill="#ef4444" font-size="12" font-family="system-ui" font-weight="600">High</text>
+  <rect x="950" y="105" width="220" height="80" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="965" y="130" fill="#94a3b8" font-size="12" font-family="system-ui">Last Scan</text>
+  <text x="965" y="165" fill="#10b981" font-size="14" font-family="system-ui" font-weight="600">2 minutes ago</text>
+  <rect x="230" y="210" width="470" height="200" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="245" y="240" fill="#f1f5f9" font-size="14" font-family="system-ui" font-weight="500">PII Types Distribution</text>
+  <rect x="260" y="350" width="40" height="40" rx="4" fill="#10b981" opacity="0.7"/>
+  <rect x="320" y="320" width="40" height="70" rx="4" fill="#06b6d4" opacity="0.7"/>
+  <rect x="380" y="290" width="40" height="100" rx="4" fill="#f59e0b" opacity="0.7"/>
+  <rect x="440" y="340" width="40" height="50" rx="4" fill="#8b5cf6" opacity="0.7"/>
+  <rect x="500" y="360" width="40" height="30" rx="4" fill="#ec4899" opacity="0.7"/>
+  <rect x="560" y="330" width="40" height="60" rx="4" fill="#3b82f6" opacity="0.7"/>
+  <rect x="620" y="345" width="40" height="45" rx="4" fill="#ef4444" opacity="0.7"/>
+  <text x="280" y="405" fill="#64748b" font-size="10" font-family="system-ui" text-anchor="middle">SSN</text>
+  <text x="340" y="405" fill="#64748b" font-size="10" font-family="system-ui" text-anchor="middle">Email</text>
+  <text x="400" y="405" fill="#64748b" font-size="10" font-family="system-ui" text-anchor="middle">Phone</text>
+  <text x="460" y="405" fill="#64748b" font-size="10" font-family="system-ui" text-anchor="middle">CC</text>
+  <text x="520" y="405" fill="#64748b" font-size="10" font-family="system-ui" text-anchor="middle">DOB</text>
+  <text x="580" y="405" fill="#64748b" font-size="10" font-family="system-ui" text-anchor="middle">Address</text>
+  <text x="640" y="405" fill="#64748b" font-size="10" font-family="system-ui" text-anchor="middle">IP</text>
+  <rect x="720" y="210" width="450" height="200" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="735" y="240" fill="#f1f5f9" font-size="14" font-family="system-ui" font-weight="500">Recent Detections</text>
+  <text x="735" y="270" fill="#94a3b8" font-size="12" font-family="system-ui">✓ SSN: 3,456 records</text>
+  <text x="735" y="295" fill="#94a3b8" font-size="12" font-family="system-ui">✓ Email: 5,678 records</text>
+  <text x="735" y="320" fill="#94a3b8" font-size="12" font-family="system-ui">✓ Phone: 2,234 records</text>
+  <text x="735" y="345" fill="#94a3b8" font-size="12" font-family="system-ui">✓ Credit Card: 1,088 records</text>
+  <text x="735" y="370" fill="#94a3b8" font-size="12" font-family="system-ui">✓ Aadhaar: 890 records</text>
+  <text x="735" y="395" fill="#94a3b8" font-size="12" font-family="system-ui">✓ Passport: 456 records</text>
+  <rect x="230" y="435" width="305" height="120" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="245" y="465" fill="#f1f5f9" font-size="13" font-family="system-ui" font-weight="500">Compliance Status</text>
+  <text x="245" y="495" fill="#10b981" font-size="12" font-family="system-ui">✓ GDPR Compliant</text>
+  <text x="245" y="520" fill="#10b981" font-size="12" font-family="system-ui">✓ CCPA Compliant</text>
+  <text x="245" y="545" fill="#f59e0b" font-size="12" font-family="system-ui">⚠ HIPAA Review Needed</text>
+  <rect x="555" y="435" width="305" height="120" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="570" y="465" fill="#f1f5f9" font-size="13" font-family="system-ui" font-weight="500">Quick Actions</text>
+  <rect x="570" y="480" width="120" height="28" rx="6" fill="#10b981" opacity="0.2" stroke="#10b981" stroke-width="1"/>
+  <text x="630" y="498" fill="#10b981" font-size="11" font-family="system-ui" text-anchor="middle">Generate Report</text>
+  <rect x="700" y="480" width="120" height="28" rx="6" fill="#334155"/>
+  <text x="760" y="498" fill="#94a3b8" font-size="11" font-family="system-ui" text-anchor="middle">Apply Masking</text>
+  <rect x="570" y="515" width="120" height="28" rx="6" fill="#334155"/>
+  <text x="630" y="533" fill="#94a3b8" font-size="11" font-family="system-ui" text-anchor="middle">Set Alerts</text>
+  <rect x="700" y="515" width="120" height="28" rx="6" fill="#334155"/>
+  <text x="760" y="533" fill="#94a3b8" font-size="11" font-family="system-ui" text-anchor="middle">Export Data</text>
+  <rect x="880" y="435" width="290" height="120" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="895" y="465" fill="#f1f5f9" font-size="13" font-family="system-ui" font-weight="500">Scan Speed</text>
+  <text x="895" y="500" fill="#f1f5f9" font-size="32" font-family="system-ui" font-weight="700">0.8s</text>
+  <text x="895" y="530" fill="#94a3b8" font-size="12" font-family="system-ui">Avg. per 1M records</text>
+</svg>
