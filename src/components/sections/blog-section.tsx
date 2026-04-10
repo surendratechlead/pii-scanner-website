@@ -1,99 +1,167 @@
-import { ArrowRight } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowRight, ExternalLink } from 'lucide-react'
+import blogs from '@/data/blogs.json'
 
-const BLOG_POSTS = [
-  {
-    title: 'Navigating DPDPA Compliance: What You Need to Know',
-    excerpt:
-      'Learn how the new Data Protection and Digital Privacy Act impacts your data storage strategies.',
-    date: 'March 12, 2024',
-    readTime: '8 min read',
-    category: 'COMPLIANCE',
-    categoryColor: 'bg-teal-500 text-slate-950',
-    gradient: 'from-teal-500/20 to-sky-500/20',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuD1osXD-_i79AlYCvxlIYbyk2pf2opia8c9spreP05rtSpMbLIPgj5252u6wGdhF98yVtLFry5Jf3Ap_fMbXKZ0oz1pAQ1FPQrRlI2Z5IRRAVObgDjwE5laS1Oz2HM2HEajldv7D7AhU6qFIDpqwMVpu8zYeBa2SzkyS6wSAETMTSH3X6jgfVcWWQ39W_I2YmJO70u1T_LQ14cCim_Fi6O6R-cvWq_xJPUOrsHpIrUfcXM0lqH97_EpXP_zyM0DacQEsR4SendQ0NSh',
-  },
-  {
-    title: 'The Future of AI in Data Privacy: Predictive Scanning',
-    excerpt:
-      'Exploring how LLMs are revolutionizing the way we detect and mask sensitive information.',
-    date: 'March 08, 2024',
-    readTime: '6 min read',
-    category: 'AI TECH',
-    categoryColor: 'bg-sky-500 text-slate-950',
-    gradient: 'from-sky-500/20 to-teal-500/20',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuCLx6Vp0Ax2m8jylSqXMPlAUOHeJxgX76RV3bHAvQtedMfrkkdmriJQm4NSFJLbyapZnP7MbJR9cASSmFSMHLvO3aGAfHZWJ73pwdHwpw5GmBl3NsLlMdeOrWtib2PKHj9mIJwwHDoTho2_P7wTlf1jhcT6Skzh5UHkUSJDdo3qgo84DLLmno7bEAEBaaIjNm4egrHagKYXSN5_nkFZ30iETy50m0YYNahLG4ho-WFNFWhq4iypYduYUX9ZZ-PisXvk_jlaTqwluqcu',
-  },
-  {
-    title: 'Building a Proactive Security Culture in Remote Teams',
-    excerpt:
-      'Best practices for maintaining data hygiene across distributed engineering organizations.',
-    date: 'February 28, 2024',
-    readTime: '10 min read',
-    category: 'SECURITY',
-    categoryColor: 'bg-indigo-500 text-white',
-    gradient: 'from-teal-500/20 to-indigo-500/20',
-    image:
-      'https://lh3.googleusercontent.com/aida-public/AB6AXuDKGA8x2mAH1zgc8k5Yu0caUQN4OySkvHyqjskOu4HSGAlGshMP3V4B6qdouxrz2LMlC3NYhPiNfM-QK1SvJ2QeyjeU0RSxgpptwupJ58jvpf_GK3Vr4aKnFVkPtRFpMG0Z0AVGfZnBjOAC19kDZbBN3-8ccbw8MQsky-eR4ZX5xqWXVULQZ_bTFWkotO1fEKEW-DHVi2sn77PJpS7LAIL94iO6s_zXaM_YUlt0KI73O-2wEt0aw3sShvkdKfP4DycjKrKueg7kcvDG',
-  },
+const FILTER_GROUPS = [
+  { key: 'all', label: 'All' },
+  { key: 'compliance', label: 'Compliance' },
+  { key: 'industry', label: 'Industry' },
+  { key: 'rights', label: 'Rights' },
+  { key: 'tech', label: 'Technology' },
+  { key: 'risk', label: 'Risk' },
 ]
 
+const CATEGORY_COLORS: Record<string, string> = {
+  AI: 'bg-violet-500/80 text-white',
+  'AI/ML': 'bg-violet-500/80 text-white',
+  International: 'bg-sky-500/80 text-white',
+  GDPR: 'bg-blue-500/80 text-white',
+  Global: 'bg-blue-500/80 text-white',
+  Penalties: 'bg-red-500/80 text-white',
+  CXO: 'bg-amber-500/80 text-slate-950',
+  SDF: 'bg-teal-500/80 text-slate-950',
+  DPO: 'bg-emerald-500/80 text-white',
+  DPBI: 'bg-cyan-500/80 text-slate-950',
+  Checklist: 'bg-teal-500/80 text-slate-950',
+  Biometric: 'bg-rose-500/80 text-white',
+  Vendor: 'bg-orange-500/80 text-white',
+  Deadline: 'bg-red-500/80 text-white',
+  Template: 'bg-indigo-500/80 text-white',
+  Audit: 'bg-amber-500/80 text-slate-950',
+  Healthcare: 'bg-pink-500/80 text-white',
+  Terminology: 'bg-slate-500/80 text-white',
+  Breach: 'bg-red-600/80 text-white',
+  Banking: 'bg-yellow-500/80 text-slate-950',
+  CMP: 'bg-teal-500/80 text-slate-950',
+  'E-commerce': 'bg-orange-500/80 text-white',
+  EdTech: 'bg-purple-500/80 text-white',
+  HR: 'bg-blue-500/80 text-white',
+  Messaging: 'bg-green-500/80 text-slate-950',
+  Consent: 'bg-emerald-500/80 text-white',
+  Children: 'bg-pink-500/80 text-white',
+  Rights: 'bg-sky-500/80 text-white',
+  DPIA: 'bg-indigo-500/80 text-white',
+  Compensation: 'bg-amber-500/80 text-slate-950',
+  Criminal: 'bg-red-600/80 text-white',
+  SME: 'bg-orange-500/80 text-white',
+  Erasure: 'bg-teal-500/80 text-slate-950',
+  Challenges: 'bg-rose-500/80 text-white',
+  Notice: 'bg-slate-500/80 text-white',
+  Cookies: 'bg-amber-500/80 text-slate-950',
+  Business: 'bg-emerald-500/80 text-white',
+  Policy: 'bg-indigo-500/80 text-white',
+  Guide: 'bg-teal-500/80 text-slate-950',
+}
+
+const VISIBLE_COUNT = 9
+
 export function BlogSection() {
+  const [activeFilter, setActiveFilter] = useState('all')
+  const [showAll, setShowAll] = useState(false)
+
+  const filtered = activeFilter === 'all'
+    ? blogs
+    : blogs.filter((b) => b.filterGroup === activeFilter)
+
+  const displayed = showAll ? filtered : filtered.slice(0, VISIBLE_COUNT)
+
   return (
-    <section className="py-12 relative overflow-hidden">
+    <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
       <div className="absolute -right-64 top-0 w-96 h-96 bg-indigo-500/10 blur-[120px] rounded-full" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-12 gap-4">
-          <div>
-            <h2 className="text-4xl font-headline font-bold text-white mb-4">
-              Latest from the Blog
-            </h2>
-            <p className="text-slate-400">
-              Insights, guides, and updates from the frontline of data security.
-            </p>
-          </div>
-          <span className="group flex items-center gap-2 text-teal-400 hover:text-teal-300 font-medium transition-colors cursor-pointer">
-            View All
-            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-          </span>
+        <div className="text-center mb-8">
+          <h2 className="text-4xl font-headline font-bold text-white mb-4">
+            DPDPA Knowledge Hub
+          </h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            Expert insights on India&apos;s Digital Personal Data Protection Act from{' '}
+            <a
+              href="https://www.dpdpa.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-teal-400 hover:text-teal-300 transition-colors"
+            >
+              DPDPA.com
+            </a>
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {BLOG_POSTS.map((post) => (
-            <div
-              key={post.title}
-              className="glass-card rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300 group cursor-pointer"
+        {/* Filter tabs */}
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {FILTER_GROUPS.map((group) => (
+            <button
+              key={group.key}
+              onClick={() => { setActiveFilter(group.key); setShowAll(false) }}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${
+                activeFilter === group.key
+                  ? 'bg-teal-500/20 text-teal-400 border border-teal-500/30'
+                  : 'bg-white/5 text-slate-400 border border-transparent hover:bg-white/10 hover:text-white'
+              }`}
             >
-              <div className="h-48 relative overflow-hidden">
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${post.gradient} z-10`}
-                />
-                <img
-                  alt={post.title}
-                  src={post.image}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-4 left-4 z-20">
-                  <span
-                    className={`${post.categoryColor} px-3 py-1 rounded-full text-xs font-bold font-label`}
-                  >
-                    {post.category}
-                  </span>
-                </div>
+              {group.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Blog grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {displayed.map((post) => (
+            <a
+              key={post.href}
+              href={post.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-card rounded-2xl overflow-hidden hover:-translate-y-1 transition-all duration-300 group flex flex-col"
+            >
+              <div className="px-5 pt-5 pb-3 flex items-center justify-between">
+                <span
+                  className={`px-3 py-1 rounded-full text-xs font-bold font-label ${
+                    CATEGORY_COLORS[post.category] || 'bg-teal-500/80 text-slate-950'
+                  }`}
+                >
+                  {post.category}
+                </span>
+                <ExternalLink className="w-4 h-4 text-slate-500 group-hover:text-teal-400 transition-colors" />
               </div>
-              <div className="p-6">
-                <p className="text-xs text-slate-500 mb-2 font-label">
-                  {post.date} &bull; {post.readTime}
-                </p>
-                <h3 className="text-xl font-headline font-bold text-white mb-3 group-hover:text-teal-400 transition-colors">
+
+              <div className="px-5 pb-5 flex-1 flex flex-col">
+                <h3 className="text-lg font-headline font-bold text-white mb-2 group-hover:text-teal-400 transition-colors leading-snug">
                   {post.title}
                 </h3>
-                <p className="text-slate-400 text-sm line-clamp-2">{post.excerpt}</p>
+                <p className="text-slate-400 text-sm line-clamp-2 flex-1">{post.excerpt}</p>
+                <div className="mt-4 pt-3 border-t border-white/5 flex items-center justify-between">
+                  <p className="text-xs text-slate-500 font-label">{post.date}</p>
+                  <p className="text-xs text-slate-600 font-label truncate ml-4">{post.author}</p>
+                </div>
               </div>
-            </div>
+            </a>
           ))}
+        </div>
+
+        {/* Show more / View all on dpdpa.com */}
+        {filtered.length > VISIBLE_COUNT && !showAll && (
+          <div className="mt-8 text-center">
+            <button
+              onClick={() => setShowAll(true)}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/5 hover:bg-white/10 text-white border border-white/10 font-semibold transition-all active:scale-95"
+            >
+              Show More
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </div>
+        )}
+
+        <div className="mt-10 text-center">
+          <a
+            href="https://www.dpdpa.com/blog.html"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 text-teal-400 hover:text-teal-300 font-bold transition-colors"
+          >
+            View All {blogs.length} Articles on DPDPA.com
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          </a>
         </div>
       </div>
     </section>

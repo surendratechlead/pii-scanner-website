@@ -20,7 +20,7 @@ export function Header({ activeTab, onTabChange, onRequestDemo }: HeaderProps) {
   }
 
   return (
-    <nav className="fixed top-0 w-full z-50 bg-slate-950/40 backdrop-blur-md border-b border-white/10 shadow-2xl shadow-teal-900/10">
+    <nav className="fixed top-0 w-full z-50 bg-slate-950/60 backdrop-blur-lg border-b border-white/10 shadow-2xl shadow-teal-900/10">
       <div className="flex justify-between items-center px-6 lg:px-8 h-16 max-w-7xl mx-auto">
         <button onClick={() => onTabChange(0)} className="flex items-center gap-2">
           <ShieldCheck className="w-7 h-7 text-teal-500" fill="currentColor" />

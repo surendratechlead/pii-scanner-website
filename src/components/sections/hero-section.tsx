@@ -23,7 +23,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ onStartTrial, onWatchDemo }: HeroSectionProps) {
   return (
-    <section className="relative h-full flex items-center overflow-hidden py-6 lg:py-0">
+    <section className="relative min-h-[calc(100vh-4rem)] flex items-center overflow-hidden py-12 md:py-16 lg:py-20">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-circuit opacity-50" />
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/20 rounded-full blur-[120px] pointer-events-none" />
@@ -40,9 +40,9 @@ export function HeroSection({ onStartTrial, onWatchDemo }: HeroSectionProps) {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-8 xl:gap-12 items-center">
-          <div className="space-y-4 lg:space-y-5">
+      <div className="container mx-auto px-6 lg:px-8 max-w-7xl relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-center">
+          <div className="space-y-6 lg:space-y-7">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 text-xs font-bold tracking-widest uppercase">
               <span className="flex h-2 w-2 rounded-full bg-teal-500 animate-pulse" />
               AI-Powered Security
@@ -75,7 +75,7 @@ export function HeroSection({ onStartTrial, onWatchDemo }: HeroSectionProps) {
               </button>
             </div>
 
-            <div className="pt-4 grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-white/10">
+            <div className="pt-6 grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-white/10">
               {STATS.map((stat) => (
                 <div key={stat.label} className="space-y-0.5">
                   <div className="text-xl lg:text-2xl font-bold text-white">{stat.value}</div>
@@ -87,9 +87,9 @@ export function HeroSection({ onStartTrial, onWatchDemo }: HeroSectionProps) {
             </div>
           </div>
 
-          <div className="relative group hidden md:block pb-6">
+          <div className="relative group hidden md:block">
             <div className="absolute -inset-1 bg-gradient-to-r from-teal-500 to-sky-400 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000" />
-            <div className="relative glass-morphism border border-white/10 rounded-2xl p-5 xl:p-6 shadow-2xl overflow-hidden">
+            <div className="relative glass-morphism border border-white/10 rounded-2xl p-6 xl:p-8 shadow-2xl overflow-hidden">
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-lg bg-teal-500/20 flex items-center justify-center border border-teal-500/30">

@@ -42,16 +42,16 @@ export function PricingSection({ onStartTrial, onContactSales }: PricingSectionP
   }
 
   return (
-    <section className="py-12 bg-slate-950/30">
+    <section className="py-16 md:py-20 lg:py-24 bg-slate-950/30">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-8">
+        <div className="text-center mb-12">
           <h2 className="font-headline text-3xl md:text-4xl font-bold text-white mb-3">
             Simple, Transparent Pricing
           </h2>
           <p className="text-slate-400">Scale your security with your infrastructure.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10 items-stretch">
           {PLANS.map((plan) => (
             <div
               key={plan.name}

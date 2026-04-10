@@ -7,7 +7,7 @@ interface CTASectionProps {
 
 export function CTASection({ onStartTrial, onScheduleDemo }: CTASectionProps) {
   return (
-    <section className="py-12 relative overflow-hidden">
+    <section className="py-16 md:py-20 lg:py-24 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-br from-teal-600 via-sky-600 to-indigo-600 opacity-90" />
       <div
         className="absolute inset-0 opacity-10"

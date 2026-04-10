@@ -62,7 +62,7 @@ const COLOR_MAP = {
 
 export function FeaturesSection() {
   return (
-    <section className="relative z-10 py-10 px-6 md:px-12 bg-circuit overflow-hidden">
+    <section className="relative z-10 py-16 md:py-20 lg:py-24 px-6 md:px-12 bg-circuit overflow-hidden">
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
         <Shield className="absolute top-20 left-10 w-24 h-24 text-teal-500 rotate-12" />
         <Lock className="absolute top-1/4 right-20 w-20 h-20 text-sky-500 -rotate-12" />
@@ -71,7 +71,7 @@ export function FeaturesSection() {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-8 text-center">
+        <div className="mb-12 text-center">
           <h2 className="text-3xl md:text-4xl font-headline font-bold text-white inline-block relative">
             Enterprise-Grade PII Detection
             <div className="absolute -bottom-3 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500 to-transparent" />
@@ -82,7 +82,7 @@ export function FeaturesSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {FEATURES.map((feature) => {
             const colors = COLOR_MAP[feature.color as keyof typeof COLOR_MAP]
             const Icon = feature.icon
@@ -101,7 +101,7 @@ export function FeaturesSection() {
         </div>
       </div>
 
-      <div className="mt-8 space-y-1">
+      <div className="mt-16 space-y-1">
         <div className="w-full h-px bg-gradient-to-r from-transparent via-teal-500 to-transparent opacity-30" />
         <div className="w-full h-px bg-gradient-to-r from-transparent via-sky-500 to-transparent opacity-20" />
         <div className="w-full h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-10" />

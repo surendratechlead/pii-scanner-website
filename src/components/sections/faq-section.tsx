@@ -41,7 +41,7 @@ export function FAQSection() {
 
   return (
     <section
-      className="py-12 relative"
+      className="py-16 md:py-20 lg:py-24 relative"
       style={{
         backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='20' fill='%230ea5e9' fill-opacity='0.03' font-family='monospace' font-size='10'%3E01101 10101%3C/text%3E%3Ctext x='40' y='50' fill='%230ea5e9' fill-opacity='0.03' font-family='monospace' font-size='10'%3E11001 00110%3C/text%3E%3C/svg%3E")`,
       }}

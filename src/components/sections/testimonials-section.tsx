@@ -29,7 +29,7 @@ const TESTIMONIALS = [
 
 export function TestimonialsSection() {
   return (
-    <section className="relative py-12 overflow-hidden">
+    <section className="relative py-16 md:py-20 lg:py-24 overflow-hidden">
       <div
         className="absolute inset-0 opacity-30"
         style={{
@@ -78,7 +78,7 @@ export function TestimonialsSection() {
         </div>
       </div>
 
-      <div className="mt-12 h-px w-full bg-gradient-to-r from-transparent via-teal-500 to-transparent opacity-20" />
+      <div className="mt-16 h-px w-full bg-gradient-to-r from-transparent via-teal-500 to-transparent opacity-20" />
     </section>
   )
 }

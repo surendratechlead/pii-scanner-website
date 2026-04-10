@@ -9,9 +9,9 @@ const CAPABILITIES = [
 
 export function AIDetectionSection() {
   return (
-    <section className="relative z-10 py-10 px-6 md:px-12 overflow-hidden">
+    <section className="relative z-10 py-16 md:py-20 lg:py-24 px-6 md:px-12 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-sm font-label uppercase tracking-widest">
               <Zap className="w-4 h-4" />
