@@ -1,149 +1,110 @@
-'use client'
+import { Shield, Brain, Database, Clock, BarChart, Lock } from 'lucide-react'
 
-import Image from 'next/image'
-import { Badge } from '@/components/ui/badge'
-import { Search, Brain, Layers, BarChart3, Cloud, Shield } from 'lucide-react'
-import { MotionDiv, MotionItem } from '@/components/ui/motion-wrapper'
-import { fadeInUp, staggerContainer } from '@/lib/animations'
-
-interface Feature {
-  icon: React.ReactNode
-  title: string
-  description: string
-  items: string[]
-  footnote?: string
-}
-
-const FEATURES: Feature[] = [
+const FEATURES = [
   {
-    icon: <Search className="w-5 h-5" />,
+    icon: Shield,
     title: 'Automated PII Discovery',
-    description: 'Automatically locate Personally Identifiable Information across:',
-    items: [
-      'File servers and shared drives',
-      'Databases (structured data)',
-      'Emails and attachments',
-      'Cloud storage (OneDrive, SharePoint, S3)',
-      'Endpoints and user workstations',
-    ],
-    footnote: 'Scans can be run on-demand, scheduled, or continuously.',
+    description: 'Scan databases automatically to find personal data like emails, SSNs, phone numbers, and home addresses with zero manual intervention.',
+    color: 'teal',
   },
   {
-    icon: <Brain className="w-5 h-5" />,
-    title: 'Rule-Based Classification',
-    description: 'Detects PII using deterministic patterns, configurable rules, and jurisdiction-specific identifiers.',
-    items: [
-      'Names and contact details',
-      'Aadhaar, PAN, SSN, Passport numbers',
-      'Financial data (bank accounts, credit cards)',
-      'Date of birth and addresses',
-      'Employee and customer identifiers',
-    ],
-    footnote: 'Supports country-specific IDs and custom patterns.',
+    icon: Brain,
+    title: 'AI-Powered Classification',
+    description: 'Advanced machine learning models classify 100+ PII types with 99.7% accuracy, reducing false positives through deep contextual analysis.',
+    color: 'indigo',
   },
   {
-    icon: <Layers className="w-5 h-5" />,
-    title: 'Structured & Unstructured Data',
-    description: 'Detect PII in both structured and unstructured data:',
-    items: [
-      'Databases and application tables',
-      'Logs and audit trails',
-      'PDFs, Word, Excel files',
-      'Emails and chat exports',
-    ],
-    footnote: 'No blind spots — visibility across all major formats.',
+    icon: Database,
+    title: '50+ Database Support',
+    description: 'Seamless integration with PostgreSQL, MySQL, MongoDB, Snowflake, BigQuery, and modern cloud data warehouses via native connectors.',
+    color: 'sky',
   },
   {
-    icon: <BarChart3 className="w-5 h-5" />,
-    title: 'Risk-Based Dashboards',
-    description: 'Get instant, actionable insights through dashboards that show:',
-    items: [
-      'Types of PII detected',
-      'High-risk locations and users',
-      'Data age and exposure levels',
-      'Compliance posture by regulation',
-    ],
-    footnote: 'Reports are audit-ready and exportable.',
+    icon: Clock,
+    title: 'Real-Time Monitoring',
+    description: 'Continuous scanning infrastructure detects new PII instances as data flows through your pipelines, ensuring non-stop protection.',
+    color: 'teal',
   },
   {
-    icon: <Cloud className="w-5 h-5" />,
-    title: 'Flexible Deployment',
-    description: 'Deploy in the environment that fits your security requirements:',
-    items: [
-      'On-premise',
-      'Private cloud',
-      'Public cloud',
-      'Hybrid environments',
-    ],
-    footnote: 'Full data control and privacy within your environment.',
+    icon: BarChart,
+    title: 'Compliance Dashboards',
+    description: 'Generate DPDPA, GDPR, HIPAA, and CCPA compliance reports at your fingertips. Automated audit trails for every scan event.',
+    color: 'indigo',
   },
   {
-    icon: <Shield className="w-5 h-5" />,
-    title: 'Compliance Enablement',
-    description: 'Align with major privacy and security frameworks:',
-    items: [
-      'DPDP Act (India)',
-      'GDPR',
-      'ISO 27001 / SOC 2',
-      'HIPAA / PCI-DSS',
-    ],
-    footnote: 'Supports DSARs, right to erasure, and audit evidence.',
+    icon: Lock,
+    title: 'Data Masking & Encryption',
+    description: 'Protect sensitive data immediately upon discovery with one-click masking, anonymization, and field-level encryption policies.',
+    color: 'sky',
   },
 ]
 
+const COLOR_MAP = {
+  teal: {
+    bg: 'bg-teal-500/10',
+    border: 'border-teal-500/20',
+    hoverBorder: 'group-hover:border-teal-500/50',
+    text: 'text-teal-400',
+  },
+  indigo: {
+    bg: 'bg-indigo-500/10',
+    border: 'border-indigo-500/20',
+    hoverBorder: 'group-hover:border-indigo-500/50',
+    text: 'text-indigo-400',
+  },
+  sky: {
+    bg: 'bg-sky-500/10',
+    border: 'border-sky-500/20',
+    hoverBorder: 'group-hover:border-sky-500/50',
+    text: 'text-sky-400',
+  },
+}
+
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-20 md:py-28 bg-slate-50">
-      <div className="container mx-auto px-4">
-        <MotionDiv variants={fadeInUp} className="text-center max-w-3xl mx-auto mb-14">
-          <Badge className="mb-4 text-xs font-medium text-slate-500 border-slate-200" variant="outline">Features</Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 text-slate-900 tracking-tight">
-            Powerful PII Discovery. Intelligent Risk Visibility. Real Protection.
+    <section className="relative z-10 py-12 px-6 md:px-12 bg-circuit overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
+        <Shield className="absolute top-20 left-10 w-24 h-24 text-teal-500 rotate-12" />
+        <Lock className="absolute top-1/4 right-20 w-20 h-20 text-sky-500 -rotate-12" />
+        <Brain className="absolute bottom-1/3 left-1/4 w-16 h-16 text-indigo-500" />
+        <Database className="absolute bottom-10 right-10 w-24 h-24 text-sky-500" />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="mb-12 text-center">
+          <h2 className="text-4xl md:text-5xl font-headline font-bold text-white inline-block relative">
+            Enterprise-Grade PII Detection
+            <div className="absolute -bottom-4 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500 to-transparent" />
           </h2>
-          <p className="text-base md:text-lg text-slate-500 leading-relaxed">
-            Find, understand, and protect personal data across your entire digital ecosystem — accurately, continuously, and at scale.
+          <p className="mt-8 text-slate-400 max-w-2xl mx-auto text-lg">
+            Comprehensive scanning infrastructure designed to safeguard your most sensitive data
+            assets across the entire enterprise ecosystem.
           </p>
-        </MotionDiv>
+        </div>
 
-        <MotionDiv variants={fadeInUp} className="max-w-6xl mx-auto mb-12">
-          <div className="relative overflow-hidden bg-slate-900 rounded-xl border border-slate-800 shadow-2xl">
-            <Image
-              src="/images/sections/features-dashboard.svg"
-              alt="PII Scanner dashboard showing scan summary, PII types distribution, and compliance status"
-              width={1200}
-              height={675}
-              className="w-full h-auto"
-              priority
-            />
-          </div>
-        </MotionDiv>
-
-        <MotionDiv variants={staggerContainer} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {FEATURES.map((feature, i) => (
-            <MotionItem key={i} variants={fadeInUp}>
-              <div className="h-full bg-white rounded-xl border border-slate-200 p-6 md:p-7">
-                <div className="w-10 h-10 rounded-lg bg-slate-100 flex items-center justify-center text-slate-600 mb-5">
-                  {feature.icon}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {FEATURES.map((feature) => {
+            const colors = COLOR_MAP[feature.color as keyof typeof COLOR_MAP]
+            const Icon = feature.icon
+            return (
+              <div key={feature.title} className="glass-card p-8 rounded-xl transition-all group">
+                <div
+                  className={`w-12 h-12 rounded-lg ${colors.bg} flex items-center justify-center mb-6 border ${colors.border} ${colors.hoverBorder} transition-colors`}
+                >
+                  <Icon className={`w-6 h-6 ${colors.text}`} />
                 </div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">{feature.title}</h3>
-                <p className="text-sm text-slate-500 mb-4">{feature.description}</p>
-                <ul className="space-y-2 mb-4">
-                  {feature.items.map((item, j) => (
-                    <li key={j} className="flex items-start gap-2 text-sm">
-                      <span className="mt-2 w-1 h-1 rounded-full bg-emerald-500 flex-shrink-0" />
-                      <span className="text-slate-600">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                {feature.footnote && (
-                  <p className="text-xs text-slate-400 pt-3 border-t border-slate-100">
-                    {feature.footnote}
-                  </p>
-                )}
+                <h3 className="text-xl font-headline font-bold text-white mb-3">{feature.title}</h3>
+                <p className="text-slate-400 leading-relaxed">{feature.description}</p>
               </div>
-            </MotionItem>
-          ))}
-        </MotionDiv>
+            )
+          })}
+        </div>
+      </div>
+
+      <div className="mt-12 space-y-1">
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-teal-500 to-transparent opacity-30" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-sky-500 to-transparent opacity-20" />
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-10" />
       </div>
     </section>
   )

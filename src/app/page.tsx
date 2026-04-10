@@ -1,48 +1,77 @@
 'use client'
 
-import { ErrorBoundary } from '@/components/error-boundary'
+import { useState, useRef, useCallback } from 'react'
 import { Header } from '@/components/sections/header'
-import { TabNavigation } from '@/components/sections/tab-navigation'
 import { HeroSection } from '@/components/sections/hero-section'
-import { AboutSection } from '@/components/sections/about-section'
 import { FeaturesSection } from '@/components/sections/features-section'
 import { AIDetectionSection } from '@/components/sections/ai-detection-section'
 import { DatabaseSection } from '@/components/sections/database-section'
-import { IntegrationsSection } from '@/components/sections/integrations-section'
 import { PricingSection } from '@/components/sections/pricing-section'
+import { CTASection } from '@/components/sections/cta-section'
 import { TestimonialsSection } from '@/components/sections/testimonials-section'
 import { FAQSection } from '@/components/sections/faq-section'
-import { ResourcesSection } from '@/components/sections/resources-section'
 import { BlogSection } from '@/components/sections/blog-section'
-import { CTASection } from '@/components/sections/cta-section'
 import { Footer } from '@/components/sections/footer'
-import { CountdownBanner } from '@/components/sections/countdown-banner'
+import { FormModal } from '@/components/form-modal'
 
-function SafeSection({ children }: { children: React.ReactNode }) {
-  return <ErrorBoundary>{children}</ErrorBoundary>
-}
+type ModalType = 'demo' | 'trial' | 'contact' | null
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState(0)
+  const [modal, setModal] = useState<ModalType>(null)
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  const handleTabChange = useCallback((tab: number) => {
+    setActiveTab(tab)
+    scrollRef.current?.scrollTo({ top: 0 })
+  }, [])
+
+  const openDemo = useCallback(() => setModal('demo'), [])
+  const openTrial = useCallback(() => setModal('trial'), [])
+  const openContact = useCallback(() => setModal('contact'), [])
+
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
-      <CountdownBanner />
-      <TabNavigation />
-      <main className="flex-1">
-        <SafeSection><HeroSection /></SafeSection>
-        <SafeSection><AboutSection /></SafeSection>
-        <SafeSection><FeaturesSection /></SafeSection>
-        <SafeSection><AIDetectionSection /></SafeSection>
-        <SafeSection><DatabaseSection /></SafeSection>
-        <SafeSection><IntegrationsSection /></SafeSection>
-        <SafeSection><PricingSection /></SafeSection>
-        <SafeSection><TestimonialsSection /></SafeSection>
-        <SafeSection><FAQSection /></SafeSection>
-        <SafeSection><ResourcesSection /></SafeSection>
-        <SafeSection><BlogSection /></SafeSection>
-        <SafeSection><CTASection /></SafeSection>
+    <div className="h-screen flex flex-col bg-slate-950 text-slate-300 overflow-hidden">
+      <Header activeTab={activeTab} onTabChange={handleTabChange} onRequestDemo={openDemo} />
+
+      <main className="flex-1 pt-20 overflow-hidden">
+        <div ref={scrollRef} className="h-full overflow-y-auto scrollbar-thin">
+          <div className={`tab-panel ${activeTab === 0 ? 'tab-panel-active' : ''}`}>
+            {activeTab === 0 && <HeroSection onStartTrial={openTrial} onWatchDemo={openDemo} />}
+          </div>
+          <div className={`tab-panel ${activeTab === 1 ? 'tab-panel-active' : ''}`}>
+            {activeTab === 1 && (
+              <>
+                <FeaturesSection />
+                <AIDetectionSection />
+              </>
+            )}
+          </div>
+          <div className={`tab-panel ${activeTab === 2 ? 'tab-panel-active' : ''}`}>
+            {activeTab === 2 && <DatabaseSection />}
+          </div>
+          <div className={`tab-panel ${activeTab === 3 ? 'tab-panel-active' : ''}`}>
+            {activeTab === 3 && (
+              <>
+                <PricingSection onStartTrial={openTrial} onContactSales={openContact} />
+                <CTASection onStartTrial={openTrial} onScheduleDemo={openDemo} />
+              </>
+            )}
+          </div>
+          <div className={`tab-panel ${activeTab === 4 ? 'tab-panel-active' : ''}`}>
+            {activeTab === 4 && (
+              <>
+                <TestimonialsSection />
+                <FAQSection />
+                <BlogSection />
+                <Footer onNavigate={handleTabChange} />
+              </>
+            )}
+          </div>
+        </div>
       </main>
-      <Footer />
+
+      {modal && <FormModal type={modal} onClose={() => setModal(null)} />}
     </div>
   )
 }

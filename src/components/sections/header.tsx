@@ -1,129 +1,92 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/button'
+import { useState } from 'react'
 import { ShieldCheck, Menu, X } from 'lucide-react'
-import { ResponsiveModal } from '@/components/ui/responsive-modal'
-import { SignupForm } from '@/components/forms/signup-form'
 
-const NAV_LINKS = [
-  { href: '#about', label: 'About Us' },
-  { href: '#features', label: 'Features' },
-  { href: '#ai-detection', label: 'AI Detection' },
-  { href: '#pricing', label: 'Pricing' },
-  { href: '#resources', label: 'Resources' },
-  { href: '#blog', label: 'Blog' },
-]
+const TAB_LABELS = ['Home', 'Features', 'Databases', 'Pricing', 'Resources']
 
-export function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [showSignup, setShowSignup] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+interface HeaderProps {
+  activeTab: number
+  onTabChange: (tab: number) => void
+  onRequestDemo: () => void
+}
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+export function Header({ activeTab, onTabChange, onRequestDemo }: HeaderProps) {
+  const [mobileOpen, setMobileOpen] = useState(false)
+
+  const handleTabClick = (index: number) => {
+    onTabChange(index)
+    setMobileOpen(false)
+  }
 
   return (
-    <>
-      <header className={`fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-lg border-b border-border transition-shadow duration-300 ${scrolled ? 'shadow-md' : ''}`}>
-        <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between h-16 md:h-18">
-            <a href="#" className="flex items-center gap-2 flex-shrink-0">
-              <div className="w-9 h-9 md:w-10 md:h-10 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center shadow-lg shadow-emerald-500/20">
-                <ShieldCheck className="w-5 h-5 md:w-6 md:h-6 text-white" />
-              </div>
-              <span className="text-lg md:text-xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent whitespace-nowrap">
-                PII Scanner
-              </span>
-            </a>
+    <nav className="fixed top-0 w-full z-50 bg-slate-950/40 backdrop-blur-md border-b border-white/10 shadow-2xl shadow-teal-900/10">
+      <div className="flex justify-between items-center px-6 lg:px-8 h-20 max-w-7xl mx-auto">
+        <button onClick={() => onTabChange(0)} className="flex items-center gap-2">
+          <ShieldCheck className="w-7 h-7 text-teal-500" fill="currentColor" />
+          <span className="text-xl font-black tracking-tighter text-white font-headline">
+            PII Scanner
+          </span>
+        </button>
 
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8">
-              {NAV_LINKS.map((link) => (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  className="relative text-sm text-muted-foreground hover:text-foreground transition-colors whitespace-nowrap after:absolute after:left-0 after:bottom-[-4px] after:h-[2px] after:w-0 after:bg-emerald-500 after:transition-all after:duration-300 hover:after:w-full"
-                >
-                  {link.label}
-                </a>
-              ))}
-            </nav>
-
-            <div className="hidden lg:flex items-center gap-3">
-              <a href="/pii-scanner-website/request-demo">
-                <Button
-                  variant="ghost"
-                  className="text-emerald-600 hover:text-emerald-700 hover:bg-emerald-50 dark:hover:bg-emerald-950"
-                >
-                  Request Demo
-                </Button>
-              </a>
-              <Button
-                className="bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white shadow-lg shadow-emerald-500/25"
-                onClick={() => setShowSignup(true)}
-              >
-                Get Started Free
-              </Button>
-            </div>
-
+        <div className="hidden md:flex items-center gap-1 text-sm font-medium tracking-tight">
+          {TAB_LABELS.map((label, index) => (
             <button
-              className="lg:hidden p-2 -mr-2 touch-manipulation"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              key={label}
+              onClick={() => handleTabClick(index)}
+              className={`px-4 py-2 rounded-lg transition-all duration-200 ${
+                activeTab === index
+                  ? 'text-teal-400 bg-teal-500/10'
+                  : 'text-slate-300 hover:text-white hover:bg-white/5'
+              }`}
             >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {label}
             </button>
-          </div>
-
-          {isMenuOpen && (
-            <div className="lg:hidden py-4 border-t border-border animate-in slide-in-from-top-2 duration-200">
-              <nav className="flex flex-col gap-1">
-                {NAV_LINKS.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="text-base text-muted-foreground hover:text-foreground transition-colors py-3 px-2 rounded-lg hover:bg-muted"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </nav>
-              <div className="flex flex-col gap-3 pt-4 mt-4 border-t border-border">
-                <a href="/pii-scanner-website/request-demo">
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="w-full h-12 text-base"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    Request Demo
-                  </Button>
-                </a>
-                <Button
-                  size="lg"
-                  className="w-full h-12 text-base bg-gradient-to-r from-emerald-500 to-teal-600 text-white"
-                  onClick={() => { setShowSignup(true); setIsMenuOpen(false); }}
-                >
-                  Get Started Free
-                </Button>
-              </div>
-            </div>
-          )}
+          ))}
         </div>
-      </header>
 
-      <ResponsiveModal
-        open={showSignup}
-        onOpenChange={setShowSignup}
-        title="Create Your Account"
-        description="Start your 14-day free trial. No credit card required."
-      >
-        <SignupForm onSuccess={() => setShowSignup(false)} />
-      </ResponsiveModal>
-    </>
+        <div className="flex items-center gap-4">
+          <button
+            onClick={onRequestDemo}
+            className="hidden sm:inline-flex bg-teal-500 hover:bg-teal-600 text-white px-6 py-2.5 rounded-lg font-semibold transition-all duration-300 shadow-lg shadow-teal-500/20 active:scale-95"
+          >
+            Request Demo
+          </button>
+          <button
+            className="md:hidden text-slate-300 hover:text-white"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </div>
+
+      {mobileOpen && (
+        <div className="md:hidden bg-slate-950/95 backdrop-blur-lg border-t border-white/5 px-6 pb-6 pt-2">
+          {TAB_LABELS.map((label, index) => (
+            <button
+              key={label}
+              onClick={() => handleTabClick(index)}
+              className={`block w-full text-left py-3 transition-colors font-medium ${
+                activeTab === index
+                  ? 'text-teal-400'
+                  : 'text-slate-300 hover:text-teal-400'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+          <button
+            onClick={() => {
+              onRequestDemo()
+              setMobileOpen(false)
+            }}
+            className="mt-4 block w-full text-center bg-teal-500 hover:bg-teal-600 text-white px-6 py-3 rounded-lg font-semibold"
+          >
+            Request Demo
+          </button>
+        </div>
+      )}
+    </nav>
   )
 }

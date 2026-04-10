@@ -1,196 +1,152 @@
-'use client'
-
-import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
-import { ArrowRight, Play, Sparkles, Scan, FileSearch, Shield, Check } from 'lucide-react'
-import { ResponsiveModal } from '@/components/ui/responsive-modal'
-import { SignupForm } from '@/components/forms/signup-form'
-import { DemoRequestForm } from '@/components/forms/demo-request-form'
-import { fadeInUp, staggerContainer } from '@/lib/animations'
+import {
+  Fingerprint, Database, Lock, ShieldCheck, Key, Eye, Shield,
+  ArrowRight, PlayCircle, BarChart3
+} from 'lucide-react'
 
 const STATS = [
-  { value: '50B+', label: 'Records Scanned' },
-  { value: '500+', label: 'Enterprise Clients' },
-  { value: '99.9%', label: 'Detection Accuracy' },
-  { value: '<1s', label: 'Avg Scan Speed' },
+  { value: '50+', label: 'Databases' },
+  { value: '99.7%', label: 'Accuracy' },
+  { value: '500+', label: 'Companies' },
+  { value: '<5 Min', label: 'Setup' },
 ]
 
-const PII_TYPES = ['SSN: 3,456', 'Email: 5,678', 'Phone: 2,234', 'Credit Card: 1,088']
-const QUICK_ACTIONS = ['Generate Report', 'Apply Masking', 'Set Alerts', 'Export Data']
+const SCAN_RESULTS = [
+  { type: 'Email Addresses', compliance: 'GDPR Article 6', count: '2,847 found' },
+  { type: 'Phone Numbers', compliance: 'DPDPA Section 4', count: '1,234 found' },
+  { type: 'SSN / ID Numbers', compliance: 'HIPAA Privacy Rule', count: '456 found' },
+]
 
-export function HeroSection() {
-  const [showSignup, setShowSignup] = useState(false)
-  const [showDemo, setShowDemo] = useState(false)
+interface HeroSectionProps {
+  onStartTrial: () => void
+  onWatchDemo: () => void
+}
 
+export function HeroSection({ onStartTrial, onWatchDemo }: HeroSectionProps) {
   return (
-    <section className="relative pt-36 pb-12 md:pt-44 md:pb-20 overflow-hidden">
-      <div className="absolute inset-0 bg-gradient-to-b from-emerald-50/50 via-transparent to-transparent dark:from-emerald-950/20" />
-      <motion.div
-        className="absolute top-20 left-1/4 w-64 md:w-96 h-64 md:h-96 bg-emerald-500/10 rounded-full blur-3xl"
-        animate={{ scale: [1, 1.15, 1], opacity: [0.5, 0.8, 0.5] }}
-        transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut' }}
-      />
-      <motion.div
-        className="absolute bottom-0 right-1/4 w-64 md:w-96 h-64 md:h-96 bg-teal-500/10 rounded-full blur-3xl"
-        animate={{ scale: [1.1, 1, 1.1], opacity: [0.6, 0.4, 0.6] }}
-        transition={{ duration: 10, repeat: Infinity, ease: 'easeInOut' }}
-      />
-
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808008_1px,transparent_1px),linear-gradient(to_bottom,#80808008_1px,transparent_1px)] bg-[size:48px_48px]" />
-
-      <div className="container mx-auto px-4 relative">
-        <motion.div
-          className="max-w-5xl mx-auto text-center"
-          initial="hidden"
-          animate="visible"
-          variants={staggerContainer}
-        >
-          <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-3 md:px-4 py-1.5 md:py-2 rounded-full bg-emerald-100 dark:bg-emerald-950 border border-emerald-200 dark:border-emerald-800 mb-6 md:mb-8">
-            <Sparkles className="w-3.5 h-3.5 md:w-4 md:h-4 text-emerald-600" />
-            <span className="text-xs md:text-sm font-medium text-emerald-700 dark:text-emerald-400">Trusted by 500+ enterprises worldwide</span>
-          </motion.div>
-
-          <motion.h1 variants={fadeInUp} className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4 md:mb-6 px-2">
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
-              Protect Sensitive Data
-            </span>
-            <br />
-            <span className="text-foreground">Across All Your Databases</span>
-          </motion.h1>
-
-          <motion.p variants={fadeInUp} className="text-base md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8 md:mb-10 px-4">
-            AI-powered PII scanning that automatically detects, classifies, and helps you protect
-            personally identifiable information across your entire database infrastructure.
-          </motion.p>
-
-          <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4 mb-12 md:mb-16 px-4">
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white shadow-xl shadow-emerald-500/25 px-6 md:px-8 h-12 md:h-14 text-base md:text-lg"
-              onClick={() => setShowSignup(true)}
-            >
-              Start Free Trial
-              <ArrowRight className="ml-2 w-4 h-4 md:w-5 md:h-5" />
-            </Button>
-
-            <Button
-              size="lg"
-              variant="outline"
-              className="w-full sm:w-auto px-6 md:px-8 h-12 md:h-14 text-base md:text-lg border-2"
-              onClick={() => setShowDemo(true)}
-            >
-              <Play className="mr-2 w-4 h-4 md:w-5 md:h-5" />
-              Watch Demo
-            </Button>
-          </motion.div>
-
-          <motion.div variants={fadeInUp} className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mx-auto px-2">
-            {STATS.map((stat, i) => (
-              <div key={i} className="text-center p-3 md:p-4 rounded-xl bg-background/50 backdrop-blur-sm border border-border/50 hover:border-emerald-300 dark:hover:border-emerald-700 transition-colors">
-                <div className="text-2xl md:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
-                  {stat.value}
-                </div>
-                <div className="text-xs md:text-sm text-muted-foreground mt-1">{stat.label}</div>
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          className="mt-12 md:mt-20 relative px-2 md:px-4"
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6, ease: 'easeOut' }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 pointer-events-none" />
-          <div className="relative bg-gradient-to-b from-emerald-100 to-teal-100 dark:from-emerald-950/50 dark:to-teal-950/50 rounded-xl md:rounded-2xl border border-emerald-200 dark:border-emerald-800 shadow-2xl overflow-hidden animate-float">
-            <div className="p-2 border-b border-emerald-200 dark:border-emerald-800 flex items-center gap-2">
-              <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-400" />
-              <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-yellow-400" />
-              <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-green-400" />
-            </div>
-            <div className="p-4 md:p-6 lg:p-8">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
-                <div className="bg-white dark:bg-gray-900 rounded-lg md:rounded-xl p-4 md:p-6 shadow-lg">
-                  <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-emerald-100 dark:bg-emerald-900 flex items-center justify-center">
-                      <Scan className="w-4 h-4 md:w-5 md:h-5 text-emerald-600" />
-                    </div>
-                    <div className="font-semibold text-sm md:text-base">Scan Summary</div>
-                  </div>
-                  <div className="space-y-2 md:space-y-3">
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Total Records</span>
-                      <span className="font-medium">2,456,789</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">PII Detected</span>
-                      <span className="font-medium text-amber-600">12,456</span>
-                    </div>
-                    <div className="flex justify-between text-sm">
-                      <span className="text-muted-foreground">Risk Score</span>
-                      <Badge className="bg-red-100 text-red-700 dark:bg-red-900 dark:text-red-300 text-xs">High</Badge>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="bg-white dark:bg-gray-900 rounded-lg md:rounded-xl p-4 md:p-6 shadow-lg">
-                  <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-teal-100 dark:bg-teal-900 flex items-center justify-center">
-                      <FileSearch className="w-4 h-4 md:w-5 md:h-5 text-teal-600" />
-                    </div>
-                    <div className="font-semibold text-sm md:text-base">PII Types Found</div>
-                  </div>
-                  <div className="space-y-1.5 md:space-y-2">
-                    {PII_TYPES.map((item, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs md:text-sm">
-                        <Check className="w-3.5 h-3.5 md:w-4 md:h-4 text-emerald-500 flex-shrink-0" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="bg-white dark:bg-gray-900 rounded-lg md:rounded-xl p-4 md:p-6 shadow-lg">
-                  <div className="flex items-center gap-2 md:gap-3 mb-3 md:mb-4">
-                    <div className="w-8 h-8 md:w-10 md:h-10 rounded-lg bg-cyan-100 dark:bg-cyan-900 flex items-center justify-center">
-                      <Shield className="w-4 h-4 md:w-5 md:h-5 text-cyan-600" />
-                    </div>
-                    <div className="font-semibold text-sm md:text-base">Quick Actions</div>
-                  </div>
-                  <div className="space-y-1.5 md:space-y-2">
-                    {QUICK_ACTIONS.map((action, i) => (
-                      <Button key={i} variant="outline" size="sm" className="w-full justify-start h-8 md:h-9 text-xs md:text-sm">
-                        {action}
-                      </Button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+    <section className="relative h-full flex items-center overflow-hidden">
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-circuit opacity-50" />
+        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[600px] bg-teal-500/20 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-indigo-500/10 rounded-full blur-[100px] pointer-events-none" />
+        <div className="scanning-line" />
+        <div className="absolute inset-0 pointer-events-none">
+          <Fingerprint className="absolute top-[20%] left-[10%] text-slate-400 opacity-5 w-16 h-16 rotate-12" />
+          <Database className="absolute top-[60%] left-[5%] text-slate-400 opacity-5 w-20 h-20 -rotate-12" />
+          <Lock className="absolute top-[15%] left-[45%] text-slate-400 opacity-5 w-12 h-12" />
+          <ShieldCheck className="absolute top-[80%] left-[30%] text-slate-400 opacity-5 w-24 h-24" />
+          <Key className="absolute top-[40%] right-[10%] text-slate-400 opacity-5 w-16 h-16" />
+          <Eye className="absolute top-[70%] right-[5%] text-slate-400 opacity-5 w-28 h-28" />
+          <Shield className="absolute top-[10%] right-[30%] text-slate-400 opacity-5 w-12 h-12" />
+        </div>
       </div>
 
-      <ResponsiveModal
-        open={showSignup}
-        onOpenChange={setShowSignup}
-        title="Create Your Account"
-        description="Start your 14-day free trial. No credit card required."
-      >
-        <SignupForm onSuccess={() => setShowSignup(false)} />
-      </ResponsiveModal>
+      <div className="container mx-auto px-6 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 xl:gap-16 items-center">
+          <div className="space-y-6">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 text-xs font-bold tracking-widest uppercase">
+              <span className="flex h-2 w-2 rounded-full bg-teal-500 animate-pulse" />
+              AI-Powered Security
+            </div>
 
-      <ResponsiveModal
-        open={showDemo}
-        onOpenChange={setShowDemo}
-        title="Request a Demo"
-        description="See PII Scanner in action. Our team will reach out within 24 hours."
-      >
-        <DemoRequestForm onSuccess={() => setShowDemo(false)} />
-      </ResponsiveModal>
+            <h1 className="text-4xl md:text-6xl xl:text-7xl font-headline font-bold text-white leading-tight">
+              Discover &amp; Protect{' '}
+              <span className="text-teal-400">Personal Data</span> Across Every Database
+            </h1>
+
+            <p className="text-lg xl:text-xl text-slate-300 leading-relaxed max-w-xl">
+              AI-powered PII detection that scans 50+ database types, identifies sensitive data
+              in minutes, and helps you achieve DPDPA, GDPR &amp; HIPAA compliance.
+            </p>
+
+            <div className="flex flex-wrap gap-4 pt-2">
+              <button
+                onClick={onStartTrial}
+                className="bg-teal-500 hover:bg-teal-400 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-[0_0_20px_rgba(20,184,166,0.4)] flex items-center gap-2 group active:scale-95"
+              >
+                Start Free Trial
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
+              <button
+                onClick={onWatchDemo}
+                className="bg-white/5 hover:bg-white/10 text-white border border-white/10 px-8 py-4 rounded-xl font-bold text-lg transition-all backdrop-blur-sm flex items-center gap-2 active:scale-95"
+              >
+                <PlayCircle className="w-5 h-5" />
+                Watch Demo
+              </button>
+            </div>
+
+            <div className="pt-8 grid grid-cols-2 md:grid-cols-4 gap-6 border-t border-white/10">
+              {STATS.map((stat) => (
+                <div key={stat.label} className="space-y-1">
+                  <div className="text-2xl font-bold text-white">{stat.value}</div>
+                  <div className="text-xs uppercase tracking-widest text-slate-500 font-bold">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Scan dashboard -- visible on lg+, simplified card on md */}
+          <div className="relative group hidden md:block">
+            <div className="absolute -inset-1 bg-gradient-to-r from-teal-500 to-sky-400 rounded-2xl blur opacity-25 group-hover:opacity-40 transition duration-1000" />
+            <div className="relative glass-morphism border border-white/10 rounded-2xl p-6 xl:p-8 shadow-2xl overflow-hidden">
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-lg bg-teal-500/20 flex items-center justify-center border border-teal-500/30">
+                    <BarChart3 className="w-5 h-5 text-teal-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold">Active Scan: Production_DB</h3>
+                    <p className="text-xs text-slate-500">Scanning 248.5 GB of encrypted data</p>
+                  </div>
+                </div>
+                <span className="px-2 py-1 bg-teal-500/20 text-teal-400 text-[10px] font-bold rounded uppercase tracking-tighter">
+                  In Progress
+                </span>
+              </div>
+
+              <div className="space-y-3">
+                {SCAN_RESULTS.map((result) => (
+                  <div
+                    key={result.type}
+                    className="flex items-center justify-between p-3 bg-white/5 rounded-xl border border-white/5 hover:border-teal-500/30 transition-colors"
+                  >
+                    <div className="flex items-center gap-3">
+                      <Shield className="w-5 h-5 text-teal-500" fill="currentColor" />
+                      <div>
+                        <div className="text-sm font-medium text-slate-200">{result.type}</div>
+                        <div className="text-xs text-slate-500">Compliance: {result.compliance}</div>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-teal-400 font-mono font-bold text-sm">{result.count}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-6 pt-6 border-t border-white/10 flex items-end justify-between h-20 gap-2">
+                {[40, 65, 90, 50, 100, 75, 30].map((h, i) => (
+                  <div
+                    key={i}
+                    className="w-full rounded-t-sm"
+                    style={{
+                      height: `${h}%`,
+                      backgroundColor: `rgba(20, 184, 166, ${0.1 + (h / 100) * 0.5})`,
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <div className="absolute -bottom-4 -left-4 glass-morphism p-3 border border-white/10 rounded-xl shadow-xl flex items-center gap-3">
+              <div className="w-2 h-2 rounded-full bg-teal-500" />
+              <span className="text-xs font-bold text-white tracking-wider">THREAT LEVEL: LOW</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   )
 }

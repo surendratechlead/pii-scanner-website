@@ -1,73 +1,97 @@
 'use client'
 
-import { Badge } from '@/components/ui/badge'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
-import { MotionDiv, MotionItem } from '@/components/ui/motion-wrapper'
-import { fadeInUp, staggerContainer } from '@/lib/animations'
+import { useState } from 'react'
+import { Plus, Minus } from 'lucide-react'
 
-interface FAQ {
-  question: string
-  answer: string
-}
-
-const FAQS: FAQ[] = [
+const FAQ_ITEMS = [
   {
-    question: 'How does PII Scanner detect sensitive data?',
-    answer: 'PII Scanner uses a combination of AI-powered pattern recognition, machine learning models, and regex patterns to identify over 50 types of PII. Our AI continuously learns from new data patterns to improve detection accuracy.',
+    question: 'How does PII scanning work?',
+    answer:
+      'PII Scanner uses advanced AI and machine learning models to analyze your database schemas and data content. It identifies patterns matching known PII types (emails, SSNs, phone numbers, etc.) while also using contextual analysis to detect non-obvious sensitive data. The entire process runs securely within your infrastructure.',
+  },
+  {
+    question: 'What databases are supported?',
+    answer:
+      'We support a wide range of structured and unstructured data sources including PostgreSQL, MySQL, MongoDB, Snowflake, Databricks, and cloud storage like AWS S3 and Google Cloud Storage.',
+  },
+  {
+    question: 'How accurate is the detection?',
+    answer:
+      'Our AI-powered classification achieves 99.7% accuracy across 100+ PII types. We continuously train our models on anonymized datasets and offer a zero false-positive mode for mission-critical workflows where precision is paramount.',
   },
   {
     question: 'Is my data secure during scanning?',
-    answer: "Absolutely. PII Scanner operates with a read-only connection to your databases. We never store your actual data - only metadata about detected PII. All connections are encrypted, and we're SOC 2 Type II certified.",
+    answer:
+      'Absolutely. PII Scanner operates within your infrastructure using read-only connections. No data ever leaves your environment. All scan metadata is encrypted at rest and in transit with AES-256 and TLS 1.3.',
   },
   {
-    question: 'How long does a typical scan take?',
-    answer: 'Scan time depends on database size and complexity. On average, we scan about 1 million records per second. A typical enterprise database can be fully scanned in under an hour.',
+    question: 'Can I define custom PII types?',
+    answer:
+      'Yes. The Pro and Enterprise plans allow you to train custom classifiers for industry-specific PII types. You can define patterns, provide sample data, and fine-tune detection thresholds to match your exact compliance requirements.',
   },
   {
-    question: 'Can I customize what PII types to detect?',
-    answer: "Yes! You can enable or disable specific PII types, create custom detection rules for your organization's unique data formats, and set sensitivity thresholds for different data categories.",
-  },
-  {
-    question: 'Do you support on-premise deployment?',
-    answer: 'Yes, our Enterprise plan includes on-premise deployment options. This allows you to run PII Scanner entirely within your own infrastructure for maximum data security.',
-  },
-  {
-    question: 'What compliance standards do you support?',
-    answer: 'PII Scanner helps you comply with GDPR, CCPA, HIPAA, PCI-DSS, SOC 2, ISO 27001, and many more. We provide pre-built compliance templates and automated reporting for each standard.',
+    question: 'Which compliance standards are supported?',
+    answer:
+      'PII Scanner generates automated compliance reports for DPDPA, GDPR, HIPAA, CCPA, SOC 2, and PCI DSS. Our dashboards provide real-time visibility into your compliance posture with exportable audit trails.',
   },
 ]
 
 export function FAQSection() {
-  return (
-    <section id="faq" className="py-16 md:py-24 bg-muted/30">
-      <div className="container mx-auto px-4">
-        <MotionDiv variants={fadeInUp} className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
-          <Badge className="mb-3 md:mb-4" variant="outline">FAQ</Badge>
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-bold mb-3 md:mb-4">
-            Frequently Asked
-            <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent"> Questions</span>
-          </h2>
-          <p className="text-base md:text-lg text-muted-foreground">
-            Everything you need to know about PII Scanner.
-          </p>
-        </MotionDiv>
+  const [openIndex, setOpenIndex] = useState<number | null>(1)
 
-        <MotionDiv variants={staggerContainer} className="max-w-3xl mx-auto">
-          <Accordion type="single" collapsible className="space-y-3 md:space-y-4">
-            {FAQS.map((faq, i) => (
-              <MotionItem key={i} variants={fadeInUp}>
-                <AccordionItem value={`item-${i}`} className="bg-card border-2 rounded-lg px-4 md:px-6 hover:shadow-md transition-shadow">
-                  <AccordionTrigger className="text-left font-medium text-sm md:text-base hover:text-emerald-600 py-4 md:py-5">
-                    {faq.question}
-                  </AccordionTrigger>
-                  <AccordionContent className="text-xs md:text-base text-muted-foreground pb-4 md:pb-5">
-                    {faq.answer}
-                  </AccordionContent>
-                </AccordionItem>
-              </MotionItem>
-            ))}
-          </Accordion>
-        </MotionDiv>
+  return (
+    <section
+      className="py-12 relative"
+      style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Ctext x='10' y='20' fill='%230ea5e9' fill-opacity='0.03' font-family='monospace' font-size='10'%3E01101 10101%3C/text%3E%3Ctext x='40' y='50' fill='%230ea5e9' fill-opacity='0.03' font-family='monospace' font-size='10'%3E11001 00110%3C/text%3E%3C/svg%3E")`,
+      }}
+    >
+      <div className="max-w-4xl mx-auto px-6">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-headline font-bold text-white mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-slate-400">
+            Everything you need to know about PII Scanner and modern data privacy.
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          {FAQ_ITEMS.map((item, index) => {
+            const isOpen = openIndex === index
+            return (
+              <div
+                key={item.question}
+                className={`rounded-xl overflow-hidden border transition-colors ${
+                  isOpen
+                    ? 'glass-card border-teal-500/20 bg-teal-500/5'
+                    : 'glass-card border-white/5'
+                }`}
+              >
+                <button
+                  className="w-full flex items-center justify-between p-6 text-left hover:bg-white/5 transition-colors"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                >
+                  <span
+                    className={`text-lg font-medium ${
+                      isOpen ? 'text-teal-400' : 'text-slate-200'
+                    }`}
+                  >
+                    {item.question}
+                  </span>
+                  {isOpen ? (
+                    <Minus className="w-5 h-5 text-teal-500 flex-shrink-0" />
+                  ) : (
+                    <Plus className="w-5 h-5 text-teal-500 flex-shrink-0" />
+                  )}
+                </button>
+                {isOpen && (
+                  <div className="px-6 pb-6 text-slate-400 leading-relaxed">{item.answer}</div>
+                )}
+              </div>
+            )
+          })}
+        </div>
       </div>
     </section>
   )
