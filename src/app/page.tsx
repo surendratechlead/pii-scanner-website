@@ -34,7 +34,7 @@ export default function Home() {
     <div className="h-screen flex flex-col bg-slate-950 text-slate-300 overflow-hidden">
       <Header activeTab={activeTab} onTabChange={handleTabChange} onRequestDemo={openDemo} />
 
-      <main className="flex-1 pt-20 overflow-hidden">
+      <main className="flex-1 pt-16 overflow-hidden">
         <div ref={scrollRef} className="h-full overflow-y-auto scrollbar-thin">
           <div className={`tab-panel ${activeTab === 0 ? 'tab-panel-active' : ''}`}>
             {activeTab === 0 && <HeroSection onStartTrial={openTrial} onWatchDemo={openDemo} />}

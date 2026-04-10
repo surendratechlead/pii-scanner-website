@@ -25,8 +25,8 @@ export function DatabaseSection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="font-headline text-4xl md:text-5xl font-bold tracking-tight mb-4 text-white">
+        <div className="text-center mb-10">
+          <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tight mb-4 text-white">
             Scan Any <span className="text-sky-400">Database</span>, Anywhere
           </h2>
           <p className="text-slate-400 max-w-2xl mx-auto text-lg">
@@ -52,7 +52,7 @@ export function DatabaseSection() {
           })}
         </div>
 
-        <div className="mt-12 text-center">
+        <div className="mt-8 text-center">
           <p className="text-slate-500">And 40+ more databases supported</p>
           <button className="text-teal-400 hover:text-teal-300 font-bold flex items-center justify-center gap-1 mt-2 group mx-auto">
             View All

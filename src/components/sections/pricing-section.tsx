@@ -44,8 +44,8 @@ export function PricingSection({ onStartTrial, onContactSales }: PricingSectionP
   return (
     <section className="py-12 bg-slate-950/30">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-12">
-          <h2 className="font-headline text-4xl md:text-5xl font-bold text-white mb-4">
+        <div className="text-center mb-8">
+          <h2 className="font-headline text-3xl md:text-4xl font-bold text-white mb-3">
             Simple, Transparent Pricing
           </h2>
           <p className="text-slate-400">Scale your security with your infrastructure.</p>
@@ -55,7 +55,7 @@ export function PricingSection({ onStartTrial, onContactSales }: PricingSectionP
           {PLANS.map((plan) => (
             <div
               key={plan.name}
-              className={`flex flex-col p-8 rounded-2xl relative ${
+              className={`flex flex-col p-6 rounded-2xl relative ${
                 plan.highlighted
                   ? 'bg-slate-900/80 backdrop-blur-xl border-2 border-teal-500 shadow-[0_0_40px_-10px_rgba(20,184,166,0.3)]'
                   : 'bg-slate-900/50 backdrop-blur-lg border border-slate-800'
@@ -73,7 +73,7 @@ export function PricingSection({ onStartTrial, onContactSales }: PricingSectionP
                 {plan.period && <span className="text-slate-400">{plan.period}</span>}
               </div>
 
-              <ul className="space-y-4 mb-10 flex-grow">
+              <ul className="space-y-3 mb-8 flex-grow">
                 {plan.features.map((feature) => (
                   <li key={feature} className="flex items-center gap-3 text-slate-300">
                     <CheckCircle className="w-4 h-4 text-teal-400 flex-shrink-0" />

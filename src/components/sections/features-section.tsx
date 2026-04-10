@@ -62,7 +62,7 @@ const COLOR_MAP = {
 
 export function FeaturesSection() {
   return (
-    <section className="relative z-10 py-12 px-6 md:px-12 bg-circuit overflow-hidden">
+    <section className="relative z-10 py-10 px-6 md:px-12 bg-circuit overflow-hidden">
       <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-10">
         <Shield className="absolute top-20 left-10 w-24 h-24 text-teal-500 rotate-12" />
         <Lock className="absolute top-1/4 right-20 w-20 h-20 text-sky-500 -rotate-12" />
@@ -71,12 +71,12 @@ export function FeaturesSection() {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-12 text-center">
-          <h2 className="text-4xl md:text-5xl font-headline font-bold text-white inline-block relative">
+        <div className="mb-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-headline font-bold text-white inline-block relative">
             Enterprise-Grade PII Detection
-            <div className="absolute -bottom-4 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500 to-transparent" />
+            <div className="absolute -bottom-3 left-0 w-full h-1 bg-gradient-to-r from-transparent via-teal-500 to-transparent" />
           </h2>
-          <p className="mt-8 text-slate-400 max-w-2xl mx-auto text-lg">
+          <p className="mt-6 text-slate-400 max-w-2xl mx-auto text-base lg:text-lg">
             Comprehensive scanning infrastructure designed to safeguard your most sensitive data
             assets across the entire enterprise ecosystem.
           </p>
@@ -87,21 +87,21 @@ export function FeaturesSection() {
             const colors = COLOR_MAP[feature.color as keyof typeof COLOR_MAP]
             const Icon = feature.icon
             return (
-              <div key={feature.title} className="glass-card p-8 rounded-xl transition-all group">
+              <div key={feature.title} className="glass-card p-6 rounded-xl transition-all group">
                 <div
-                  className={`w-12 h-12 rounded-lg ${colors.bg} flex items-center justify-center mb-6 border ${colors.border} ${colors.hoverBorder} transition-colors`}
+                  className={`w-10 h-10 rounded-lg ${colors.bg} flex items-center justify-center mb-4 border ${colors.border} ${colors.hoverBorder} transition-colors`}
                 >
-                  <Icon className={`w-6 h-6 ${colors.text}`} />
+                  <Icon className={`w-5 h-5 ${colors.text}`} />
                 </div>
-                <h3 className="text-xl font-headline font-bold text-white mb-3">{feature.title}</h3>
-                <p className="text-slate-400 leading-relaxed">{feature.description}</p>
+                <h3 className="text-lg font-headline font-bold text-white mb-2">{feature.title}</h3>
+                <p className="text-slate-400 leading-relaxed text-sm">{feature.description}</p>
               </div>
             )
           })}
         </div>
       </div>
 
-      <div className="mt-12 space-y-1">
+      <div className="mt-8 space-y-1">
         <div className="w-full h-px bg-gradient-to-r from-transparent via-teal-500 to-transparent opacity-30" />
         <div className="w-full h-px bg-gradient-to-r from-transparent via-sky-500 to-transparent opacity-20" />
         <div className="w-full h-px bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-10" />

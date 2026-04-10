@@ -9,29 +9,29 @@ const CAPABILITIES = [
 
 export function AIDetectionSection() {
   return (
-    <section className="relative z-10 py-12 px-6 md:px-12 overflow-hidden">
+    <section className="relative z-10 py-10 px-6 md:px-12 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="space-y-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+          <div className="space-y-5">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-sm font-label uppercase tracking-widest">
               <Zap className="w-4 h-4" />
               Advanced Intelligence
             </div>
 
-            <h2 className="text-4xl md:text-5xl font-headline font-bold text-white leading-tight">
+            <h2 className="text-3xl md:text-4xl font-headline font-bold text-white leading-tight">
               AI That Understands <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-sky-400 to-indigo-400">
                 Your Data Context
               </span>
             </h2>
 
-            <p className="text-slate-400 text-lg leading-relaxed">
+            <p className="text-slate-400 text-base leading-relaxed">
               Our Natural Language Processing (NLP) engine goes beyond simple regex. It analyzes the
               context surrounding data points to distinguish between a casual number and a sensitive
               identifier, ensuring your security measures are both robust and precise.
             </p>
 
-            <ul className="space-y-4">
+            <ul className="space-y-3">
               {CAPABILITIES.map((item) => (
                 <li key={item} className="flex items-center gap-4 text-slate-200">
                   <span className="w-6 h-6 rounded-full bg-sky-500/20 flex items-center justify-center flex-shrink-0">
@@ -50,7 +50,7 @@ export function AIDetectionSection() {
 
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-teal-500 via-sky-500 to-indigo-500 rounded-3xl blur opacity-25 group-hover:opacity-40 transition duration-1000" />
-            <div className="relative bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden aspect-[4/3] lg:aspect-square flex items-center justify-center">
+            <div className="relative bg-slate-900 rounded-3xl border border-slate-800 overflow-hidden aspect-[4/3] flex items-center justify-center">
               <div className="absolute inset-0 z-0">
                 <img
                   alt="Neural network visualization"
